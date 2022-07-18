@@ -4,7 +4,6 @@
 [![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=P3DGL6EANDY96)
 [![License BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![Build](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/actions/workflows/push-actions.yml/badge.svg)
 [![Follow JV conseil – Internet Consulting on Twitter](https://img.shields.io/twitter/follow/JVconseil.svg?style=social&logo=twitter)](https://twitter.com/JVconseil)
 
 Sign-in users to your Django Web app with Azure Active Directory.
@@ -97,7 +96,7 @@ AUTHENTICATION_BACKENDS += [
 ]
 ```
 
-Can be subclassed to cutomize validation rules for users.
+Can be subclassed to customize validation rules for users.
 
 ```py
 import logging
