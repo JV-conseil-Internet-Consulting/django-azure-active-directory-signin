@@ -42,7 +42,7 @@ urlpatterns += [
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
 ]
 
-# Django Azure Auth
+# Django Azure AD Sign-In
 # https://pypi.org/project/django-azure-active-directory-signin/
 
 

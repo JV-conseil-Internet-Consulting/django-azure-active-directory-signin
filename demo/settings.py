@@ -184,7 +184,7 @@ ERROR_TEMPLATE = (
 MIDDLEWARE.append("ms_identity_web.django.middleware.MsalMiddleware")
 
 
-# Django Azure Auth
+# Django Azure AD Sign-In
 # https://pypi.org/project/django-azure-active-directory-signin/
 
 INSTALLED_APPS += [

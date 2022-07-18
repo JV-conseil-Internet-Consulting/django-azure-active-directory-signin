@@ -17,22 +17,27 @@ cd "$FOLDER_PATH" || exit
 
 # Poetry install
 
-echo
-read -p "Do you want to set a Poetry environment? [y/N] " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    brew ls --versions poetry || brew install poetry
+printf "Checking if poetry is installed or install it with Homebrew...\n\n"
 
-    poetry check
-    poetry install
-    poetry update
-    poetry show --tree
-    poetry export --without-hashes -f requirements.txt --output requirements.txt
-    poetry export --dev --without-hashes -f requirements.txt --output requirements-full.txt
-    comm -3 requirements.txt requirements-full.txt > requirements-dev.txt
-    rm requirements-full.txt
-fi
+brew ls --versions poetry || brew install poetry
+
+poetry check
+poetry install
+poetry update
+poetry show --tree
+
+printf "\n\nExporting requirements.txt files...\n"
+
+poetry export --without-hashes -f requirements.txt --output requirements.txt
+poetry export --dev --without-hashes -f requirements.txt --output requirements-full.txt
+
+# How do I trim leading and trailing whitespace from each line of some output?
+# https://unix.stackexchange.com/a/102229/473393
+
+echo "Triming requirements-dev.txt..."
+
+comm -3 requirements.txt requirements-full.txt | awk '{$1=$1};1' > requirements-dev.txt
+rm requirements-full.txt
 
 # Pipenv install
 
