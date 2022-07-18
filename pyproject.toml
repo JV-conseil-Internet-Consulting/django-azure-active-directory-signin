@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "django-azure-active-directory-signin"
-version = "0.1.1"
+version = "0.1.2"
 description = "Sign-in users to your Django Web app with Azure Active Directory."
 authors = ["JV conseil <contact@jv-conseil.net>"]
 license = "BSD-3-Clause"
 readme = "README.md"
 homepage = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin"
 repository = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin"
+documentation = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/docs"
 keywords = [
     "authentication",
     "azure-active-directory",
