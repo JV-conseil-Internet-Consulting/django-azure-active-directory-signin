@@ -37,7 +37,7 @@ pip install django-azure-active-directory-signin
 - Register an app at <https://portal.azure.com/>.
 - Add a client secret and note it down.
 - Complete Redirect URI list:
-  - `https://<domain>/azure-signin/callback`
+  - `https://<your-domain>/azure-signin/callback`
   - `https://127.0.0.1:8000/azure-signin/callback`
   - `https://localhost:8000/azure-signin/callback`
 
@@ -97,6 +97,30 @@ AUTHENTICATION_BACKENDS += [
 ]
 ```
 
+Can be subclassed to cutomize validation rules for users.
+
+```py
+import logging
+
+from azure_signin.backends import AzureSigninBackend
+
+logger = logging.getLogger(__name__)
+
+class CustomAzureSigninBackend(AzureSigninBackend):
+    "Subclass AzureSigninBackend to cutomize validation rules for users."
+
+    def is_valid_user(self, user: dict, *args, **kwargs) -> bool:
+        "is_valid_user"
+        output = super().is_valid_user(user, *args, **kwargs):
+        try:
+            "run extra tests here..."
+            pass
+        except Exception as e:
+            logger.exception(e)
+        logger.debug("is_valid_user: %s", output)
+        return output
+```
+
 ### URLs
 
 Include the app's URLs in your `urlpatterns`:
@@ -141,17 +165,13 @@ that the request includes the session and user objects. Public URLs which need t
 non-authenticated users should be specified in the `settings.AZURE_SIGNIN["PUBLIC_URLS"]`, as
 shown above.
 
-## Planned development
-
-- Groups management
-
 ## Credits
 
 This app is heavily inspired by and builds on functionality in
-<https://github.com/shubhamdipt/django-microsoft-authentication>, with both feature
+<https://github.com/AgileTek/django-azure-auth>, with both feature
 improvements and code assurance through testing.
 
-Credit also to:
+## Readings 📚
 
-- <https://github.com/Azure-Samples/ms-identity-python-webapp>
-- <https://github.com/AzMoo/django-okta-auth>
+- [Quickstart: Add sign-in with Microsoft to a web app](https://docs.microsoft.com/en-us/azure/active-directory/develop/web-app-quickstart?pivots=devlang-python) (docs.microsoft.com)
+- [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions) Permissions (from least to most privileged): `User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All` (docs.microsoft.com)
