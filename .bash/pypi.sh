@@ -21,13 +21,12 @@ echo
 echo "Runnin a dry run before publishing to PyPI..."
 echo
 
-if poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --dry-run --verbose
+poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --dry-run --verbose
+
+echo
+read -p "Do you want to publishing to PyPI? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    echo
-    read -p "Do you want to publishing to PyPI? [y/N] " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --verbose
-    fi
+    poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --verbose
 fi
