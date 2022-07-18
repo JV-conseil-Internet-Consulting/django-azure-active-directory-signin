@@ -1,0 +1,17 @@
+<ul class="nav navbar-nav navbar-right">
+    {% if request.identity_context_data.authenticated or user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'status' %}">Hello
+            {{ request.identity_context_data.username }} or {{ user.first_name }}!</a>
+    </li>
+    <li>
+        <a class="btn btn-warning" href="{% url 'sign_out' %}">Sign Out</a>
+        <a class="btn btn-success" href="{% url 'azure_signin:logout' %}">Logout (Azure Auth)</a>
+    </li>
+    {% else %}
+    <li>
+        <a class="btn btn-success" href="{% url 'sign_in' %}">Sign In</a>
+        <a class="btn btn-success" href="{% url 'azure_signin:login' %}">Login (Azure Auth)</a>
+    </li>
+    {% endif %}
+</ul>

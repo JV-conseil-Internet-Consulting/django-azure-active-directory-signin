@@ -1,0 +1,81 @@
+[tool.poetry]
+name = "django-azure-active-directory-signin"
+version = "0.1.0"
+description = "Sign-in users to your Django Web app with Azure Active Directory."
+authors = ["JV conseil <contact@jv-conseil.net>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+homepage = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin"
+repository = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin"
+keywords = [
+    "authentication",
+    "azure-active-directory",
+    "azure",
+    "django",
+    "microsoft",
+    "microsoft-azure",
+    "ms-identity",
+    "msal-python",
+    "msal",
+]
+classifiers = [
+    "Framework :: Django",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+]
+packages = [
+    { include = "azure_signin"},
+]
+
+[tool.poetry.dependencies]
+django = "^4.*"
+msal = "^1.18.0"
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+coverage = {extras = ["toml"], version = "^6.4.1"}
+django-sslserver = "^0.22"
+flake8 = "^4.0.1"
+flake8-isort = "^4.*"
+mixer = "^7.2.2"
+pre-commit = "^2.19.0"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+pytest-django = "^4.5.2"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues"
+"Twitter" = "https://twitter.com/JVconseil"
+"Donate" = "https://www.paypal.com/donate/?hosted_button_id=P3DGL6EANDY96"
+
+[tool.pytest.ini_options]
+addopts = "--cov . -v --cov-report=html"
+DJANGO_SETTINGS_MODULE = "tests.settings"
+python_files = ["tests.py", "test_*.py",  "*_tests.py"]
+
+[tool.coverage.run]
+include = ["azure_signin/*"]
+omit = [
+    "*/tests/*",
+    "*/tests*",
+    "*/migrations/*",
+    "*__init__*",
+    ]
+branch = true
+disable_warnings = ["include-ignored"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover"]
+show_missing = true
+include = ["azure_signin/*"]
+omit = [
+    "*/tests/*",
+    "*/tests*",
+    "*/migrations/*",
+    "*__init__*",
+    ]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

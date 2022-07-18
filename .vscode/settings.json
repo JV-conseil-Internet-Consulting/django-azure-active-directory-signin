@@ -1,0 +1,43 @@
+{
+  "files.exclude": {
+    "**/core/ntlk_data": true,
+    "**/dumpdata": true,
+    "**/node_modules/**": true,
+    "**/*.pyc": {
+      "when": "$(basename).py"
+    },
+    "**/__pycache__": true,
+  },
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=88",
+  ],
+  "python.formatting.blackArgs": [
+    "--line-length=88"
+  ],
+  "editor.wordWrap": "on",
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.templating": true,
+  "python.pipenvPath": "~/.local/share/virtualenvs/",
+  "python.defaultInterpreterPath": "/usr/local/opt/python@3.9/bin/python3",
+  "python.envFile": "~/.env/django-azure-active-directory-signin/.env",
+  "editor.matchBrackets": "always",
+  "editor.bracketPairColorization.enabled": false,
+  "terminal.integrated.automationProfile.osx": "/bin/bash",
+  "[css][scss][less]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+}
