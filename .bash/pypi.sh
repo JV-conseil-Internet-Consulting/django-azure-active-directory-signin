@@ -17,9 +17,7 @@ cd "$FOLDER_PATH" || exit
 
 poetry build
 
-echo
-echo "Runnin a dry run before publishing to PyPI..."
-echo
+echo "Running a dry run before publishing to PyPI..."
 
 poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --dry-run --verbose
 
