@@ -36,7 +36,7 @@ pip install django-azure-active-directory-signin
 
 - Register an app at <https://portal.azure.com/>.
 - Add a client secret and note it down.
-- Complete Redirect URI list:
+- Complete the Redirect URI list:
   - `https://<your-domain>/azure-signin/callback`
   - `https://127.0.0.1:8000/azure-signin/callback`
   - `https://localhost:8000/azure-signin/callback`

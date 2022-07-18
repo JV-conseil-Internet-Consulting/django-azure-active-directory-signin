@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "folderOpen",
+            "label": "Launch",
             "type": "shell",
             "isBackground": true,
             "presentation": {
@@ -16,24 +16,37 @@
             "runOptions": {
                 "runOn": "folderOpen"
             },
-            "detail": "Launch Django Virtual Environment",
+            "detail": "Launch a Django Virtual Environment for this project",
             "problemMatcher": []
         },
         {
-            "label": "install",
+            "label": "Install",
             "type": "shell",
             "isBackground": true,
             "presentation": {
                 "reveal": "always",
             },
             "osx": {
-                "command": ".bash/pipenv.sh",
+                "command": ".bash/install.sh",
             },
-            "detail": "Install Poetry and/or Pipenv Virtual Environment",
+            "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
             "problemMatcher": []
         },
         {
-            "label": "tests",
+            "label": "PyPi",
+            "type": "shell",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+            },
+            "osx": {
+                "command": ".bash/pypi.sh",
+            },
+            "detail": "Publish this project to Pypi",
+            "problemMatcher": []
+        },
+        {
+            "label": "Test",
             "type": "shell",
             "isBackground": true,
             "presentation": {
