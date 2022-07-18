@@ -111,7 +111,7 @@ class CustomAzureSigninBackend(AzureSigninBackend):
 
     def is_valid_user(self, user: dict, *args, **kwargs) -> bool:
         "is_valid_user"
-        output = super().is_valid_user(user, *args, **kwargs):
+        output = super().is_valid_user(user, *args, **kwargs)
         try:
             "run extra tests here..."
             pass
