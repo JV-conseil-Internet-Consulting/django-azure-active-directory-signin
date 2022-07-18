@@ -11,10 +11,10 @@ Sign-in users to your Django Web app with Azure Active Directory.
 
 ## Description
 
-![Sign-in users to your Django Web app with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-v2-python-webapp/python-quickstart.svg)
-
 `django-azure-active-directory-signin` is a Django app which wraps the great [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 package to enable authentication against Microsoft's Azure Active Directory in Django projects.
+
+![Sign-in users to your Django Web app with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 The app includes `login`, `logout` and `callback` authentication views, a decorator
 to protect individual views, and middleware which allows the entire site to require user
@@ -36,7 +36,10 @@ pip install django-azure-active-directory-signin
 
 - Register an app at <https://portal.azure.com/>.
 - Add a client secret and note it down.
-- Add a Redirect URI of the format `https://<domain>/azure-signin/callback`.
+- Complete Redirect URI list:
+  - `https://<domain>/azure-signin/callback`
+  - `https://127.0.0.1:8000/azure-signin/callback`
+  - `https://localhost:8000/azure-signin/callback`
 
 ### Settings
 

@@ -17,6 +17,7 @@ keywords = [
     "ms-identity",
     "msal-python",
     "msal",
+    "signin",
 ]
 classifiers = [
     "Framework :: Django",
