@@ -7,7 +7,7 @@ license = "BSD-3-Clause"
 readme = "README.md"
 homepage = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin"
 repository = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin"
-documentation = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/docs"
+documentation = "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/tree/main/docs"
 keywords = [
     "authentication",
     "azure-active-directory",
