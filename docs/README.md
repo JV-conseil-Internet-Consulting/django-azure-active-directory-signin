@@ -44,7 +44,7 @@ pip install django-azure-active-directory-signin
 
 ![Add a client secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-05-app-reg-04-credentials.png)
 
-Copy your **client_id**, **tenant_id** and **client_secret** and store them in environment variables (see `.env/` folder for sample) or better still in an **Azure Key Vault**.
+Copy your **client_id**, **tenant_id** and **client_secret** and store them in environment variables (see `.env` folder for sample) or better still in an **Azure Key Vault**.
 
 ![Obfuscate your credentials by using environment variables](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-03-app-reg-02.png)
 
@@ -209,6 +209,10 @@ The app includes `Install`, `Launch` and `Tests` commands accessible through
 
 ![VS Code Tasks](https://user-images.githubusercontent.com/8126807/179760209-b600877d-ac74-4fe1-b042-32ed26fd7430.png)
 ![The app includes `Install`, `Launch` and `Tests` commands accessible through `Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`)](https://user-images.githubusercontent.com/8126807/179760201-7203836c-fdb9-42d9-84f7-656b57a6721a.png)
+
+All bash scripts are stored in `.bash` folder.
+
+The virtual environment is propelled by [poetry](https://python-poetry.org) which can be installed with Homebrew `brew install poetry`.
 
 ## Credits
 
