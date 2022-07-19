@@ -12,13 +12,15 @@ Sign-in users to your Django Web app with Azure Active Directory.
 ## Description
 
 `django-azure-active-directory-signin` is a Django app which wraps [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python)
-package to enable sign in with Microsoft's Azure Active Directory (OAuth 2.0 and OpenID Connect) in Django projects.
+package to sign in users with Microsoft's Azure Active Directory (OAuth 2.0 and OpenID Connect) in Django projects.
 
 ![Sign-in users to your Django Web app with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-The app includes `login`, `logout` and `callback` authentication views, a decorator
-to protect individual views, and middleware which allows the entire site to require user
-authentication by default, with the ability to exempt specified views.
+The app includes `login`, `logout` and `callback` authentication views,
+a customizable backend to validate, create user and extend user with extra attributes,
+a decorator to protect individual views to protect individual views,
+and middleware which allows the entire site to require user authentication by default,
+with the ability to exempt specified views.
 
 This project is in no way affiliated with Microsoft.
 
@@ -38,13 +40,14 @@ pip install django-azure-active-directory-signin
 
 [Add a client secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret) in **Certificates & secrets** > **Client secrets** > **New client secret** and note it down.
 
-![](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-05-app-reg-04-credentials.png)
+![Add a client secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-05-app-reg-04-credentials.png)
 
-Copy your **client_id**, **tenant_id** and **client_secret** and store them in environment variables or better still in an `Azure Key Vault`.
+Copy your **client_id**, **tenant_id** and **client_secret** and store them in environment variables (see `.env/` folder for sample) or better still in an **Azure Key Vault**.
 
-![](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-03-app-reg-02.png)
+![Obfuscate your credentials by using environment variables](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-03-app-reg-02.png)
 
 [Add a redirect URI](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-redirect-uri) like so:
+
 - `https://<your-domain>/azure-signin/callback`
 - `https://127.0.0.1:8000/azure-signin/callback`
 - `https://localhost:8000/azure-signin/callback`
@@ -83,8 +86,6 @@ LOGIN_URL = "azure_signin:login"
 LOGIN_REDIRECT_URL = "/" # Or any other endpoint
 LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
 ```
-
-#### Note: You should obfuscate the credentials by using environment variables
 
 ### Installed apps
 
