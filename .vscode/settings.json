@@ -40,4 +40,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "scss.format.enable": false,
+  "scss.format.braceStyle": "collapse",
 }
