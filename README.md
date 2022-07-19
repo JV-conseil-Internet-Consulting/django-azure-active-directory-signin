@@ -175,3 +175,4 @@ improvements and code assurance through testing.
 
 - [Quickstart: Add sign-in with Microsoft to a web app](https://docs.microsoft.com/en-us/azure/active-directory/develop/web-app-quickstart?pivots=devlang-python) (docs.microsoft.com)
 - [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions) Permissions (from least to most privileged): `User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All` (docs.microsoft.com)
+- [Enable your Python Django web app to sign in users to your Azure Active Directory](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/tree/main/1-Authentication/sign-in) tenant with the Microsoft identity platform (github.com)

@@ -69,11 +69,6 @@ for domain in settings.ALLOWED_HOSTS:
             print(f"- https://{domain}/{path_}/{redirect_}")
 print()
 
-# for path_ in azure_signin_redirect_uri:
-#     urlpatterns += [
-#         path(f"{path_}/", include("azure_signin.urls", namespace=path_)),
-#     ]
-
 urlpatterns += [
     path("azure-auth/", include("azure_signin.urls", namespace="azure_signin")),
     # path("azure-signin/", include("azure_signin.urls", namespace="azure_signin")),
