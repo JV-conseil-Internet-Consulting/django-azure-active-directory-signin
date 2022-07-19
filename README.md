@@ -4,6 +4,7 @@
 [![License BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/branch/main/graph/badge.svg?token=WLCTWKAPF6)](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin)
+[![PyPi](https://img.shields.io/pypi/v/django-azure-active-directory-signin.svg)](https://pypi.org/project/django-azure-active-directory-signin/)
 [![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=P3DGL6EANDY96)
 [![Follow JV conseil – Internet Consulting on Twitter](https://img.shields.io/twitter/follow/JVconseil.svg?style=social&logo=twitter)](https://twitter.com/JVconseil)
 
@@ -14,7 +15,7 @@ Sign-in users to your Django Web app with Azure Active Directory.
 `django-azure-active-directory-signin` is a Django app which wraps [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 package to sign in users with Microsoft's Azure Active Directory (OAuth 2.0 and OpenID Connect) in Django projects.
 
-![Sign-in users to your Django Web app with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-v2-python-webapp/python-quickstart.svg)
+![Sign-in users to your Django Web app with Azure Active Directory](https://user-images.githubusercontent.com/8126807/179853963-7b7048bd-aab5-4eba-8903-7efb8c4ee2aa.svg)
 
 The app includes `login`, `logout` and `callback` authentication views,
 a customizable backend to validate, create user and extend user with extra attributes,
