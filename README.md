@@ -24,7 +24,7 @@ with the ability to exempt specified views.
 
 A `demo` Django app is provided to run local tests on `https` protocol thanks to [django-sslserver](https://pypi.org/project/django-sslserver/).
 
-This project is in no way affiliated with Microsoft.
+_This project is in no way affiliated with Microsoft._
 
 ## Installation
 
