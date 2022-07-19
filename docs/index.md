@@ -216,9 +216,9 @@ The virtual environment is propelled by [poetry](https://python-poetry.org) whic
 
 ## Credits
 
-This app is heavily inspired by and builds on functionality in
+This app is inspired by and builds on functionality in
 <https://github.com/AgileTek/django-azure-auth>, with both feature
-improvements and code assurance through testing.
+improvements, code coverage and extended documentation.
 
 ## Readings 📚
 
