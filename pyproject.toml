@@ -13,11 +13,14 @@ keywords = [
     "azure-active-directory",
     "azure",
     "django",
-    "microsoft",
     "microsoft-azure",
+    "microsoft",
     "ms-identity",
     "msal-python",
     "msal",
+    "oauth2",
+    "openid-connect",
+    "openidconnect",
     "signin",
 ]
 classifiers = [
@@ -26,7 +29,7 @@ classifiers = [
     "Intended Audience :: Information Technology",
 ]
 packages = [
-    { include = "azure_signin"},
+    {include = "azure_signin"},
 ]
 
 [tool.poetry.dependencies]

@@ -11,8 +11,8 @@ Sign-in users to your Django Web app with Azure Active Directory.
 
 ## Description
 
-`django-azure-active-directory-signin` is a Django app which wraps the great [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python)
-package to enable authentication against Microsoft's Azure Active Directory in Django projects.
+`django-azure-active-directory-signin` is a Django app which wraps [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python)
+package to enable sign in with Microsoft's Azure Active Directory (OAuth 2.0 and OpenID Connect) in Django projects.
 
 ![Sign-in users to your Django Web app with Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-v2-python-webapp/python-quickstart.svg)
 
@@ -32,14 +32,22 @@ pip install django-azure-active-directory-signin
 
 ## Configuration
 
-### Azure App Registration setup
+### Azure App Registration
 
-- Register an app at <https://portal.azure.com/>.
-- Add a client secret and note it down.
-- Complete the Redirect URI list:
-  - `https://<your-domain>/azure-signin/callback`
-  - `https://127.0.0.1:8000/azure-signin/callback`
-  - `https://localhost:8000/azure-signin/callback`
+[Register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). You must have permission to manage applications in Azure Active Directory (Azure AD) on your [Azure account](https://portal.azure.com).
+
+[Add a client secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret) in **Certificates & secrets** > **Client secrets** > **New client secret** and note it down.
+
+![](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-05-app-reg-04-credentials.png)
+
+Copy your **client_id**, **tenant_id** and **client_secret** and store them in environment variables or better still in an `Azure Key Vault`.
+
+![](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-03-app-reg-02.png)
+
+[Add a redirect URI](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-redirect-uri) like so:
+- `https://<your-domain>/azure-signin/callback`
+- `https://127.0.0.1:8000/azure-signin/callback`
+- `https://localhost:8000/azure-signin/callback`
 
 ### Settings
 
@@ -114,7 +122,8 @@ urlpatterns += [
 
 ### AbstractUser
 
-Add extra attributes to user with `AZURE_SIGNIN['RENAME_ATTRIBUTES']` and Django `django.contrib.auth.models.AbstractUser`.
+Add extra attributes to users with `AZURE_SIGNIN["RENAME_ATTRIBUTES"]`
+and Django `django.contrib.auth.models.AbstractUser`.
 
 ```py
 from django.contrib.auth.models import AbstractUser
@@ -123,7 +132,7 @@ from django.db import models
 
 class ExtendedUser(AbstractUser):
     """
-    Extend user with extra attributes set in `AZURE_SIGNIN['RENAME_ATTRIBUTES']`
+    Extend user with extra attributes set in `AZURE_SIGNIN["RENAME_ATTRIBUTES"]`
     """
 
     email = models.EmailField(unique=True, db_index=True)
@@ -192,10 +201,10 @@ shown above.
 
 ### VS Code Tasks
 
-The app includes `Install`, `Launch` and `Tests` commands accessible through `Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`).
+The app includes `Install`, `Launch` and `Tests` commands accessible through
+`Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`).
 
 ![VS Code Tasks](https://user-images.githubusercontent.com/8126807/179760209-b600877d-ac74-4fe1-b042-32ed26fd7430.png)
-
 ![The app includes `Install`, `Launch` and `Tests` commands accessible through `Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`)](https://user-images.githubusercontent.com/8126807/179760201-7203836c-fdb9-42d9-84f7-656b57a6721a.png)
 
 ## Credits
@@ -207,5 +216,5 @@ improvements and code assurance through testing.
 ## Readings 📚
 
 - [Quickstart: Add sign-in with Microsoft to a web app](https://docs.microsoft.com/en-us/azure/active-directory/develop/web-app-quickstart?pivots=devlang-python) (docs.microsoft.com)
-- [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions) Permissions (from least to most privileged): `User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All` (docs.microsoft.com)
+- [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions) (docs.microsoft.com)
 - [Enable your Python Django web app to sign in users to your Azure Active Directory](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/tree/main/1-Authentication/sign-in) tenant with the Microsoft identity platform (github.com)
