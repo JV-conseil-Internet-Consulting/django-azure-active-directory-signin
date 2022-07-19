@@ -17,16 +17,20 @@ cd "$FOLDER_PATH" || exit
 
 # Poetry install
 
-printf "Checking if poetry is installed or install it with Homebrew...\n\n"
+echo "Checking if poetry is installed or install it with Homebrew..."
 
 brew ls --versions poetry || brew install poetry
+
+echo "Deleting any existing 'poetry.lock' file..."
+
+find . -type f -name "poetry.lock" -print -delete
 
 poetry check
 poetry install
 poetry update
 poetry show --tree
 
-printf "\n\nExporting requirements.txt files...\n"
+echo "Exporting requirements.txt files..."
 
 poetry export --without-hashes -f requirements.txt --output requirements.txt
 poetry export --dev --without-hashes -f requirements.txt --output requirements-full.txt
@@ -37,17 +41,39 @@ poetry export --dev --without-hashes -f requirements.txt --output requirements-f
 echo "Triming requirements-dev.txt..."
 
 comm -3 requirements.txt requirements-full.txt | awk '{$1=$1};1' > requirements-dev.txt
-rm requirements-full.txt
+rm requirements-full.txt &> /dev/null
+
+echo
+read -r -N 1 -p "Do you want to initiate Django? [y/N] "
+echo
+if [[ $REPLY =~ ^[y]$ ]]
+then
+    echo "Deleting any existing 'db.sqlite3' and migrations..."
+
+    find . -type f -name "db.sqlite3" -print -delete
+    find . -type f -path "*/migrations/*" -name "0*.py" -print -delete
+
+    echo "Running migrations..."
+
+    poetry run python manage.py makemigrations
+    poetry run python manage.py migrate
+
+    echo "Creating a superuser..."
+
+    poetry run python manage.py createsuperuser
+fi
+
 
 # Pipenv install
 
 echo
-read -p "Do you want to set a Pipenv environment? [y/N] " -n 1 -r
+read -r -N 1 -p "Do you want to set a Pipenv environment? [y/N] "
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+if [[ $REPLY =~ ^[y]$ ]]
 then
     brew ls --versions pipenv || brew install pipenv
 
+    find . -type f -name "Pipfile*" -print -delete
     pipenv --rm
     sudo pipenv --clear  # clear cache
     pipenv install --verbose -d -r ./requirements-dev.txt

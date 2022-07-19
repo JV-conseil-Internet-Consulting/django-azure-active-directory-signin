@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 
 from .handlers import AzureSigninHandler
-from .configuration import _AzureSigninConfig
+from .configuration import _AzureSigninConfig, AzureSigninConfig
 
 UserModel = get_user_model()
 
@@ -20,7 +20,8 @@ class AzureSigninBackend(ModelBackend):
         "is_valid_user"
         output = False
         required_attributes = [
-            good for bad, good in _AzureSigninConfig().config.get("RENAME_ATTRIBUTES", [])
+            good
+            for bad, good in _AzureSigninConfig().config.get("RENAME_ATTRIBUTES", [])
         ]
         try:
             all_required = all(user.get(a) for a in required_attributes)
@@ -35,6 +36,16 @@ class AzureSigninBackend(ModelBackend):
             logger.exception(e)
         logger.debug("is_valid_user: %s", output)
         return output
+
+    @staticmethod
+    def get_user_from_user_model(user: dict):
+        "For legacy purposes if username if not equal to email"
+        identifier_ = user.get(AzureSigninConfig.USER_IDENTIFIER_FIELD, "")
+        scenarios = {
+            "username": UserModel._default_manager.get_by_natural_key(identifier_),
+            "email": UserModel._default_manager.get(email=identifier_),
+        }
+        return scenarios.get(AzureSigninConfig.USER_IDENTIFIER_FIELD)
 
     def authenticate(self, request, token={}, *args, **kwargs):
         """
@@ -58,8 +69,7 @@ class AzureSigninBackend(ModelBackend):
                 return output
 
             try:
-                # user = UserModel._default_manager.get_by_natural_key(username)
-                user = UserModel._default_manager.get(email=user_.get("email"))
+                user = self.get_user_from_user_model(user_)
             except UserModel.DoesNotExist:
                 user = UserModel._default_manager.create_user(**user_)
                 user.save()

@@ -11,7 +11,7 @@
                 "reveal": "always",
             },
             "osx": {
-                "command": ".bash/runsslserver.sh",
+                "command": ".bash/launch.sh",
             },
             "runOptions": {
                 "runOn": "folderOpen"
@@ -22,7 +22,7 @@
         {
             "label": "Install",
             "type": "shell",
-            "isBackground": true,
+            "isBackground": false,
             "presentation": {
                 "reveal": "always",
             },
@@ -35,7 +35,7 @@
         {
             "label": "PyPi",
             "type": "shell",
-            "isBackground": true,
+            "isBackground": false,
             "presentation": {
                 "reveal": "always",
             },
@@ -48,7 +48,7 @@
         {
             "label": "Test",
             "type": "shell",
-            "isBackground": true,
+            "isBackground": false,
             "presentation": {
                 "reveal": "always",
             },

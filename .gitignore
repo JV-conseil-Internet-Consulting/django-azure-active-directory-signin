@@ -156,4 +156,4 @@ cython_debug/
 django_auth_adfs/*
 django_cas_ng/*
 staticfiles/*
-json/*
+manifest/*

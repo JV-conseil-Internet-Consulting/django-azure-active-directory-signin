@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "user",
     "tests",
-    # thirdpart
+    # thirdparty
     "sslserver",
 ]
 
@@ -112,7 +112,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-AUTH_USER_MODEL = "user.CustomUser"
+AUTH_USER_MODEL = "user.ExtendedUser"
 
 
 # Internationalization
@@ -195,24 +195,17 @@ AZURE_SIGNIN = {
     "CLIENT_ID": os.environ.get("AZAD_CLIENT_ID"),
     "CLIENT_SECRET": os.environ.get("AZAD_SECRET_ID"),
     "TENANT_ID": os.environ.get("AZAD_TENANT_ID"),
+    "USER_IDENTIFIER_FIELD": "email",
     "RENAME_ATTRIBUTES": [
-        ("employeenumber", "employee_id"),
+        ("employeeNumber", "employee_id"),
         ("sduAppKtoOmkostningssted", "omk2"),
+        ("sduAppDKDepartmentNumber", "hcm"),
     ],
     # Permissions
     # https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions
     "SCOPES": [
-        # "email User.Read User.ReadBasic.All profile openid",
-        # "sduAppKtoOmkostningssted",
-        # "profile",
-        # "openid",
         "User.Read",
         "User.ReadBasic.All",
-        # "User.Read.All",
-        # "Directory.Read.All",
-        "api://7fd8b607-75e0-461c-b093-90d9518c8e1c/Read",
-        # f"api://{os.environ.get('AZAD_CLIENT_ID')}/Employees.Read.All",
-        # "Employees.Read.All",
     ],
 }
 

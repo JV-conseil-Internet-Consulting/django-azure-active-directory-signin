@@ -52,13 +52,14 @@ INSTALLED_APPS += [
 ]
 
 AZURE_SIGNIN = {
-    "CLIENT_ID": os.environ.get("CLIENT_ID"),
-    "CLIENT_SECRET": os.environ.get("CLIENT_SECRET"),
-    "TENANT_ID": os.environ.get("TENANT_ID"),
+    "CLIENT_ID": os.environ.get("CLIENT_ID"),  # Mandatory
+    "CLIENT_SECRET": os.environ.get("CLIENT_SECRET"),  # Mandatory
+    "TENANT_ID": os.environ.get("TENANT_ID"),  # Mandatory
+    "USER_IDENTIFIER_FIELD": "email",  # Optional
     "RENAME_ATTRIBUTES": [
         ("employeeNumber", "employee_id"),
         ("affiliationNumber", "omk2"),
-    ],
+    ],  # Optional
     "REDIRECT_URI": "https://<domain>/azure_signin/callback",  # Optional
     "SCOPES": ["User.Read.All"],  # Optional
     "AUTHORITY": "https://login.microsoftonline.com/<tenant id>",  # Optional Or https://login.microsoftonline.com/common if multi-tenant
@@ -97,30 +98,6 @@ AUTHENTICATION_BACKENDS += [
 ]
 ```
 
-Can be subclassed to customize validation rules for users.
-
-```py
-import logging
-
-from azure_signin.backends import AzureSigninBackend
-
-logger = logging.getLogger(__name__)
-
-class CustomAzureSigninBackend(AzureSigninBackend):
-    "Subclass AzureSigninBackend to cutomize validation rules for users."
-
-    def is_valid_user(self, user: dict, *args, **kwargs) -> bool:
-        "is_valid_user"
-        output = super().is_valid_user(user, *args, **kwargs)
-        try:
-            "run extra tests here..."
-            pass
-        except Exception as e:
-            logger.exception(e)
-        logger.debug("is_valid_user: %s", output)
-        return output
-```
-
 ### URLs
 
 Include the app's URLs in your `urlpatterns`:
@@ -135,12 +112,60 @@ urlpatterns += [
 
 ## Usage
 
+### AbstractUser
+
+Add extra attributes to user with `AZURE_SIGNIN['RENAME_ATTRIBUTES']` and Django `django.contrib.auth.models.AbstractUser`.
+
+```py
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class ExtendedUser(AbstractUser):
+    """
+    Extend user with extra attributes set in `AZURE_SIGNIN['RENAME_ATTRIBUTES']`
+    """
+
+    email = models.EmailField(unique=True, db_index=True)
+    employee_id = models.IntegerField(
+        null=True, default=None, unique=True, blank=True, db_index=True
+    )
+    omk2 = models.CharField(max_length=5, null=True, default=None, db_index=True)
+    hcm = models.CharField(max_length=7, null=True, default=None, db_index=True)
+```
+
+### Backend
+
+Backend can be subclassed to customize validation rules for user.
+
+```py
+import logging
+
+from azure_signin.backends import AzureSigninBackend
+
+logger = logging.getLogger(__name__)
+
+class CustomAzureSigninBackend(AzureSigninBackend):
+    "Subclass AzureSigninBackend to customize validation rules for user."
+
+    def is_valid_user(self, user: dict, *args, **kwargs) -> bool:
+        "is_valid_user"
+        output = super().is_valid_user(user, *args, **kwargs)
+        try:
+            "run extra tests here..."
+            pass
+        except Exception as e:
+            logger.exception(e)
+        logger.debug("is_valid_user: %s", output)
+        return output
+```
+
 ### Decorator
 
 To make user authentication a requirement for accessing an individual view, decorate the
 view like so:
 
-```python
+```py
 from azure_signin.decorators import azure_signin_required
 from django.shortcuts import HttpResponse
 
@@ -164,6 +189,14 @@ Make sure you add the middleware after Django's `session` and `authentication` m
 that the request includes the session and user objects. Public URLs which need to be accessed by
 non-authenticated users should be specified in the `settings.AZURE_SIGNIN["PUBLIC_URLS"]`, as
 shown above.
+
+### VS Code Tasks
+
+The app includes `Install`, `Launch` and `Tests` commands accessible through `Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`).
+
+![VS Code Tasks](https://user-images.githubusercontent.com/8126807/179760209-b600877d-ac74-4fe1-b042-32ed26fd7430.png)
+
+![The app includes `Install`, `Launch` and `Tests` commands accessible through `Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`)](https://user-images.githubusercontent.com/8126807/179760201-7203836c-fdb9-42d9-84f7-656b57a6721a.png)
 
 ## Credits
 

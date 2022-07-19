@@ -13,6 +13,9 @@ class _AzureSigninConfig:
     "TODO: Handle if user has put incorrect details in settings"
 
     def __init__(self, config={}, namespace="azure_signin:callback", *args, **kwargs):
+        config["USER_IDENTIFIER_FIELD"] = config.get(
+            "USER_IDENTIFIER_FIELD", "username"
+        )
         config["MS_GRAPH_API"] = "https://graph.microsoft.com/v1.0/me"
         config["RENAME_ATTRIBUTES"] = [
             ("family_name", "last_name"),
@@ -54,7 +57,7 @@ class _AzureSigninConfig:
             output = config
         except Exception as e:
             logger.exception(e)
-        logger.debug("parse_settings: %s", output)
+        # logger.debug("parse_settings: %s", output)
         return output
 
     @lru_cache
@@ -64,9 +67,10 @@ class _AzureSigninConfig:
             assert self.config.get(req), f"{req} must be non-empty string"
 
         is_string = required + (
-            "REDIRECT_URI",
             "LOGOUT_REDIRECT_URI",
             "LOGOUT_URI",
+            "REDIRECT_URI",
+            "USER_IDENTIFIER_FIELD",
         )
         for req in is_string:
             req_ = self.config.get(req)
@@ -74,12 +78,17 @@ class _AzureSigninConfig:
                 continue
             assert str(req_), f"{req} must be non-empty string"
 
-        is_list = ("RENAME_ATTRIBUTES", "PUBLIC_URI", "SCOPES")
+        is_list = ("PUBLIC_URI", "RENAME_ATTRIBUTES", "SCOPES")
         for req in is_list:
             req_ = self.config.get(req)
             if not req_:
                 continue
             assert list(req_), f"{req} must be non-empty list"
+
+        user_identifier_field_choices = ["username", "email"]
+        assert (
+            self.config.get("USER_IDENTIFIER_FIELD") in user_identifier_field_choices
+        ), f"USER_IDENTIFIER_FIELD not in {str(user_identifier_field_choices)}"
 
 
 AzureSigninConfig = _AzureSigninConfig(config=settings.AZURE_SIGNIN).parse_settings()

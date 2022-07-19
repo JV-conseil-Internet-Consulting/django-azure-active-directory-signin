@@ -5,13 +5,13 @@
             {{ request.identity_context_data.username }} or {{ user.first_name }}!</a>
     </li>
     <li>
-        <a class="btn btn-warning" href="{% url 'sign_out' %}">Sign Out</a>
-        <a class="btn btn-success" href="{% url 'azure_signin:logout' %}">Logout (Azure AD Sign-In)</a>
+        &nbsp; <a class="btn btn-warning" href="{% url 'azure_signin:logout' %}">Azure AD Sign-Out</a> &nbsp;
+        <a class="btn btn-warning" href="{% url 'sign_out' %}">Sign Out (MS Id Web)</a>
     </li>
     {% else %}
     <li>
-        <a class="btn btn-success" href="{% url 'sign_in' %}">Sign In</a>
-        <a class="btn btn-success" href="{% url 'azure_signin:login' %}">Login (Azure AD Sign-In)</a>
+        <a class="btn btn-success" href="{% url 'azure_signin:login' %}">Azure AD Sign-In</a> &nbsp;
+        <a class="btn btn-success" href="{% url 'sign_in' %}">Sign In (MS Id Web)</a>
     </li>
     {% endif %}
 </ul>

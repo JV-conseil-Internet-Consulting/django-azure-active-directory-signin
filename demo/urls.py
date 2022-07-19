@@ -46,13 +46,8 @@ urlpatterns += [
 # https://pypi.org/project/django-azure-active-directory-signin/
 
 
-azure_signin_redirect_uri = [
-    # "azad-auth",
-    # "azad-oauth2",
-    # "azure_signin",
-    # "azure-ad-auth",
-    "azure-signin",
-    # "oauth2",
+urlpatterns += [
+    path("azure-signin/", include("azure_signin.urls", namespace="azure_signin")),
 ]
 
 
@@ -64,12 +59,7 @@ print("-------------------------------------")
 for domain in settings.ALLOWED_HOSTS:
     if domain in ["127.0.0.1", "localhost"]:
         domain += ":8000"
-    for path_ in azure_signin_redirect_uri:
+    for path_ in ["azure-signin"]:
         for redirect_ in ["callback", "redirect"]:
             print(f"- https://{domain}/{path_}/{redirect_}")
 print()
-
-urlpatterns += [
-    path("azure-auth/", include("azure_signin.urls", namespace="azure_signin")),
-    # path("azure-signin/", include("azure_signin.urls", namespace="azure_signin")),
-]
