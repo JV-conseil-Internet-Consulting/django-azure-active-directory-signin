@@ -22,6 +22,8 @@ a decorator to protect individual views to protect individual views,
 and middleware which allows the entire site to require user authentication by default,
 with the ability to exempt specified views.
 
+A `demo` Django app is provided to run local tests on `https` protocol thanks to [django-sslserver](https://pypi.org/project/django-sslserver/).
+
 This project is in no way affiliated with Microsoft.
 
 ## Installation
@@ -46,7 +48,7 @@ Copy your **client_id**, **tenant_id** and **client_secret** and store them in e
 
 ![Obfuscate your credentials by using environment variables](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/quickstart-register-app/portal-03-app-reg-02.png)
 
-[Add a redirect URI](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-redirect-uri) like so:
+[Add redirect URI](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-redirect-uri) like so:
 
 - `https://<your-domain>/azure-signin/callback`
 - `https://127.0.0.1:8000/azure-signin/callback`

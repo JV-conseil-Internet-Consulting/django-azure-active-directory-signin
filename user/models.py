@@ -4,7 +4,7 @@ from django.db import models
 
 class ExtendedUser(AbstractUser):
     """
-    Extend user with extra attributes set in `AZURE_SIGNIN['RENAME_ATTRIBUTES']`
+    Extend user with extra attributes set in `AZURE_SIGNIN["RENAME_ATTRIBUTES"]`
     """
 
     email = models.EmailField(unique=True, db_index=True)
