@@ -1,4 +1,4 @@
-# Django Azure Active Directory Sign-In
+# Django Azure Active Directory Sign-In 🔑
 
 [![Django 4.0.6](https://img.shields.io/badge/Django-4.0.6-green)](https://docs.djangoproject.com/en/4.0/releases/4.0.6/)
 [![License BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
