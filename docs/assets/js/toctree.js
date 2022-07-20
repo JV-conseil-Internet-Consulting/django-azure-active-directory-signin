@@ -1,15 +1,16 @@
 $(function () {
     $(".markdown-body h2, .markdown-body h3").each(function () {
-        $(".toctree nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + "'>" + $(this).text() + "</a></li>");
+        let level_ = (parseInt(this.nodeName.slice(-1)) - 1).toString()
+        $(".toctree ul").append("<li class='toc level-" + level_ + " tag-" + this.nodeName.toLowerCase() + "' data-level='" + level_ + "'><a class='d-flex flex-items-baseline' href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + "'>" + $(this).text() + "</a></li>");
         $(this).attr("id", $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''));
-        $(".toctree nav ul li:first-child a").parent().addClass("active");
+        $(".toctree ul li:first-child a").parent().addClass("current");
     });
 
-    $(".toctree nav ul li").on("click", "a", function (event) {
+    $(".toctree ul li").on("click", "a", function (event) {
         var position = $($(this).attr("href")).offset().top - 190;
         $("html, body").animate({ scrollTop: position }, 400);
-        $(".toctree nav ul li a").parent().removeClass("active");
-        $(this).parent().addClass("active");
+        $(".toctree ul li a").parent().removeClass("current");
+        $(this).parent().addClass("current");
         event.preventDefault();
     });
 });
