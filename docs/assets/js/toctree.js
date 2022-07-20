@@ -11,7 +11,7 @@ $(function () {
         var position = $($(this).attr("href")).offset().top - 190;
         $("html, body").animate({ scrollTop: position }, 400);
         $(".toctree ul li").removeClass("current");
-        $(this).parent().addClass("current");
+        $(this).addClass("current");
         event.preventDefault();
     });
 });
