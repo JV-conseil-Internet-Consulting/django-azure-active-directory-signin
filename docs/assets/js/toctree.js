@@ -1,6 +1,6 @@
 $(function () {
     $(".markdown-body h2, .markdown-body h3").each(function (index) {
-        let level_ = (parseInt(this.nodeName.slice(-1)) - 2).toString()
+        let level_ = (parseInt(this.nodeName.slice(-1)) - 1).toString()
         $(".toctree ul").append("<li class='toc level-" + level_ + " tag-" + this.nodeName.toLowerCase() + "' data-sort='" + (index + 1).toString() + "' data-level='" + level_ + "'><a class='d-flex flex-items-baseline' href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + "'>" + $(this).text() + "</a></li>");
         // $(".toctree ul").append("<li class='toc level-0 tag-" + this.nodeName.toLowerCase() + "' data-sort='" + (index + 1).toString() + "' data-level='0'><a class='d-flex flex-items-baseline' href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + "'>" + $(this).text() + "</a></li>");
         $(this).attr("id", $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''));
