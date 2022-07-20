@@ -1,6 +1,5 @@
-# Just the Docs
-# A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.
-# https://github.com/just-the-docs/just-the-docs
+# jekyll-rtd-theme
+# https://github.com/rundocs/jekyll-rtd-theme
 
 remote_theme: rundocs/jekyll-rtd-theme
 
