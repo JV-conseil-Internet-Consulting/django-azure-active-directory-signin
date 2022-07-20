@@ -4,14 +4,14 @@ $(function () {
         $(".toctree ul").append("<li class='toc level-" + level_ + " tag-" + this.nodeName.toLowerCase() + "' data-sort='" + (index + 1).toString() + "' data-level='" + level_ + "'><a class='d-flex flex-items-baseline' href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + "'>" + $(this).text() + "</a></li>");
         // $(".toctree ul").append("<li class='toc level-0 tag-" + this.nodeName.toLowerCase() + "' data-sort='" + (index + 1).toString() + "' data-level='0'><a class='d-flex flex-items-baseline' href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + "'>" + $(this).text() + "</a></li>");
         $(this).attr("id", $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''));
-        $(".toctree ul li:first-child a").addClass("current");
+        $(".toctree ul li:first-child").addClass("current");
     });
 
     $(".toctree ul li").on("click", "a", function (event) {
         var position = $($(this).attr("href")).offset().top - 190;
         $("html, body").animate({ scrollTop: position }, 400);
-        $(".toctree ul li a").parent().removeClass("current");
-        $(this).addClass("current");
+        $(".toctree ul li").removeClass("current");
+        $(this).parent().addClass("current");
         event.preventDefault();
     });
 });
