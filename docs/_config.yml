@@ -1,3 +1,10 @@
-# Customizing The Leap day theme
-# https://github.com/pages-themes/leap-day
-theme: jekyll-theme-leap-day
+# Just the Docs
+# A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.
+# https://github.com/just-the-docs/just-the-docs
+
+remote_theme: just-the-docs/just-the-docs
+
+# Aux links for the upper right navigation
+aux_links:
+  "View PyPi package":
+    - "//pypi.org/project/django-azure-active-directory-signin/"
