@@ -23,9 +23,9 @@ a decorator to protect individual views to protect individual views,
 and middleware which allows the entire site to require user authentication by default,
 with the ability to exempt specified views.
 
-A `demo` Django app is provided to run local tests on `https` protocol thanks to [django-sslserver](https://pypi.org/project/django-sslserver/).
+The GitHub repository provides a `demo` Django app to run local tests on `https` protocol thanks to [django-sslserver](https://pypi.org/project/django-sslserver/).
 
-_This project is in no way affiliated with Microsoft._
+_This project is in no way affiliated with Microsoft Corporation._
 
 ## Installation
 
@@ -204,8 +204,8 @@ shown above.
 
 ### VS Code Tasks
 
-The app includes `Install`, `Launch` and `Tests` commands accessible through
-`Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`).
+The GitHub repository provides commands `Install`, `Launch` and `Tests` accessible through
+`Command Palette` (press `Cmd+Shift+P`) then `>Tasks: Run Tasks`.
 
 ![VS Code Tasks](https://user-images.githubusercontent.com/8126807/179760209-b600877d-ac74-4fe1-b042-32ed26fd7430.png)
 ![The app includes `Install`, `Launch` and `Tests` commands accessible through `Command Palette > Tasks: Run Tasks` (press `Cmd+Shift+P`)](https://user-images.githubusercontent.com/8126807/179760201-7203836c-fdb9-42d9-84f7-656b57a6721a.png)
