@@ -6,10 +6,11 @@ from .models import ExtendedUser
 
 class ExtendedUserAdmin(UserAdmin):
     list_display = (
-        "username",
-        "email",
-        "first_name",
         "last_name",
+        "first_name",
+        "email",
+        "username",
+        "hcm",
         "omk2",
         "employee_id",
         "is_superuser",

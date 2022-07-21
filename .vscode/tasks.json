@@ -7,9 +7,6 @@
             "label": "Launch",
             "type": "shell",
             "isBackground": true,
-            "presentation": {
-                "reveal": "always",
-            },
             "osx": {
                 "command": ".bash/launch.sh",
             },
@@ -22,12 +19,11 @@
         {
             "label": "Install",
             "type": "shell",
-            "isBackground": false,
             "presentation": {
-                "reveal": "always",
+                "showReuseMessage": false
             },
             "osx": {
-                "command": ".bash/install.sh",
+                "command": ".bash/install.sh && .bash/launch.sh",
             },
             "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
             "problemMatcher": []
@@ -35,9 +31,8 @@
         {
             "label": "PyPi",
             "type": "shell",
-            "isBackground": false,
             "presentation": {
-                "reveal": "always",
+                "showReuseMessage": false
             },
             "osx": {
                 "command": ".bash/pypi.sh",
@@ -48,13 +43,7 @@
         {
             "label": "Test",
             "type": "shell",
-            "isBackground": false,
-            "presentation": {
-                "reveal": "always",
-            },
-            "osx": {
-                "command": ".bash/tests.sh",
-            },
+            "command": ".bash/tests.sh",
             "detail": "Run PyTest",
             "problemMatcher": []
         }

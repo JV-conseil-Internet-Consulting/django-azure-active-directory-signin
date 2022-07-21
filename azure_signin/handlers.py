@@ -213,8 +213,11 @@ class AzureSigninHandler:
                     key: value
                     for key, value in user.items()
                     if value
-                    and key in [good for bad, good in AzureSigninConfig.RENAME_ATTRIBUTES]
+                    and key
+                    in [good for bad, good in AzureSigninConfig.RENAME_ATTRIBUTES]
                 }
+                if not output.get("username"):
+                    output["username"] = user.get("email", "")
         except Exception as e:
             logger.exception(e)
         logger_debug("user_django_mapping", output, logger)

@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
+from django.db.models import Q
 
 from .handlers import AzureSigninHandler
 from .configuration import _AzureSigninConfig, AzureSigninConfig
@@ -39,13 +40,28 @@ class AzureSigninBackend(ModelBackend):
 
     @staticmethod
     def get_user_from_user_model(user: dict):
-        "For legacy purposes if username if not equal to email"
-        identifier_ = user.get(AzureSigninConfig.USER_IDENTIFIER_FIELD, "")
-        scenarios = {
-            "username": UserModel._default_manager.get_by_natural_key(identifier_),
-            "email": UserModel._default_manager.get(email=identifier_),
-        }
-        return scenarios.get(AzureSigninConfig.USER_IDENTIFIER_FIELD)
+        """Dual search on both username & email
+
+        Canonical approach:
+
+        `UserModel._default_manager.get_by_natural_key(user.get("username", "NoUsername")`
+        """
+        return UserModel._default_manager.get(
+            Q(email=user.get("email", "NoEmail"))
+            | Q(username=user.get("username", "NoUsername"))
+        )
+
+    @staticmethod
+    def update_user_attributes(user: object, attributes=dict, *args, **kwargs):
+        "update_user_attributes"
+        try:
+            for key, value in attributes.items():
+                if not value:
+                    continue
+                setattr(user, key, value)
+            user.save()
+        except Exception as e:
+            logger.exception(e)
 
     def authenticate(self, request, token={}, *args, **kwargs):
         """
@@ -70,6 +86,7 @@ class AzureSigninBackend(ModelBackend):
 
             try:
                 user = self.get_user_from_user_model(user_)
+                self.update_user_attributes(user, user_)
             except UserModel.DoesNotExist:
                 user = UserModel._default_manager.create_user(**user_)
                 user.save()

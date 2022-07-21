@@ -51,15 +51,15 @@ urlpatterns += [
 ]
 
 
-"Azure App Registration > Redirect URI"
+# "Azure App Registration > Redirect URI"
 
-print("Azure App Registration: " + os.environ.get("AZAD_APP_REGISTRATION_NAME", ""))
-print("Azure App Registration > Redirect URI")
-print("-------------------------------------")
-for domain in settings.ALLOWED_HOSTS:
-    if domain in ["127.0.0.1", "localhost"]:
-        domain += ":8000"
-    for path_ in ["azure-signin"]:
-        for redirect_ in ["callback", "redirect"]:
-            print(f"- https://{domain}/{path_}/{redirect_}")
-print()
+# print("Azure App Registration: " + os.environ.get("AZAD_APP_REGISTRATION_NAME", ""))
+# print("Azure App Registration > Redirect URI")
+# print("-------------------------------------")
+# for domain in settings.ALLOWED_HOSTS:
+#     if domain in ["127.0.0.1", "localhost"]:
+#         domain += ":8000"
+#     for path_ in ["azure-signin"]:
+#         for redirect_ in ["callback", "redirect"]:
+#             print(f"- https://{domain}/{path_}/{redirect_}")
+# print()

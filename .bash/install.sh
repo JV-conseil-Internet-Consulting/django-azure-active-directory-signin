@@ -17,11 +17,11 @@ cd "$FOLDER_PATH" || exit
 
 # Poetry install
 
-echo "Checking if poetry is installed or install it with Homebrew..."
+printf "\nChecking if poetry is installed or install it with Homebrew...\n"
 
 brew ls --versions poetry || brew install poetry
 
-echo "Deleting any existing 'poetry.lock' file..."
+printf "\nDeleting any existing 'poetry.lock' file...\n"
 
 find . -type f -name "poetry.lock" -print -delete
 
@@ -30,7 +30,7 @@ poetry install
 poetry update
 poetry show --tree
 
-echo "Exporting requirements.txt files..."
+printf "\nExporting requirements.txt files...\n"
 
 poetry export --without-hashes -f requirements.txt --output requirements.txt
 poetry export --dev --without-hashes -f requirements.txt --output requirements-full.txt
@@ -38,44 +38,45 @@ poetry export --dev --without-hashes -f requirements.txt --output requirements-f
 # How do I trim leading and trailing whitespace from each line of some output?
 # https://unix.stackexchange.com/a/102229/473393
 
-echo "Triming requirements-dev.txt..."
+printf "Triming requirements-dev.txt...\n"
 
 comm -3 requirements.txt requirements-full.txt | awk '{$1=$1};1' > requirements-dev.txt
-rm requirements-full.txt &> /dev/null
+rm -rf requirements-full.txt
 
-echo
-read -r -N 1 -p "Do you want to initiate Django? [y/N] "
-echo
-if [[ $REPLY =~ ^[y]$ ]]
-then
-    echo "Deleting any existing 'db.sqlite3' and migrations..."
+printf "\nInitiating Django...\n"
 
-    find . -type f -name "db.sqlite3" -print -delete
-    find . -type f -path "*/migrations/*" -name "0*.py" -print -delete
+printf "\nDeleting any existing 'db.sqlite3' and migrations...\n"
 
-    echo "Running migrations..."
+find . -type f -name "db.sqlite3" -print -delete
+find . -type f -path "*/migrations/*" -name "0*.py" -print -delete
 
-    poetry run python manage.py makemigrations
-    poetry run python manage.py migrate
+printf "\nRunning migrations...\n"
 
-    echo "Creating a superuser..."
+poetry run python manage.py makemigrations
+poetry run python manage.py migrate
 
-    poetry run python manage.py createsuperuser
-fi
+printf "\nCreating a superuser...\n"
+__username="admin@django-azure-active-directory-signin.io"
+__password=$(python3 -c "import secrets; result = ''.join(secrets.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') for i in range(15)); print(result)")
+echo "Username: ${__username}"
+echo "Password: ${__password}"
+
+# poetry run python manage.py createsuperuser --username admin@nomail.com --email admin@nomail.com
+
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('${__username}', '${__username}', '${__password}');" | poetry run python manage.py shell && printf "\nDone!\nYou will be able to test superuser access to the admin panel by visiting https://127.0.0.1:8000/admin/\n"
 
 
 # Pipenv install
 
-echo
-read -r -N 1 -p "Do you want to set a Pipenv environment? [y/N] "
-echo
-if [[ $REPLY =~ ^[y]$ ]]
-then
-    brew ls --versions pipenv || brew install pipenv
+# echo
+# read -r -n 1 -p "Do you want to set a Pipenv environment? [y/N] "
+# if [[ $REPLY =~ ^[Yy]$ ]]
+# then
+#     brew ls --versions pipenv || brew install pipenv
 
-    find . -type f -name "Pipfile*" -print -delete
-    pipenv --rm
-    sudo pipenv --clear  # clear cache
-    pipenv install --verbose -d -r ./requirements-dev.txt
-    pipenv install --verbose -r ./requirements.txt
-fi
+#     find . -type f -name "Pipfile*" -print -delete
+#     pipenv --rm
+#     sudo pipenv --clear  # clear cache
+#     pipenv install --verbose -d -r ./requirements-dev.txt
+#     pipenv install --verbose -r ./requirements.txt
+# fi

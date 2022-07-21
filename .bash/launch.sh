@@ -16,6 +16,8 @@ source ".bash/bash_alias.sh"
 cd "$FOLDER_PATH" || exit
 
 
-open -n -a /Applications/Firefox.app --args "--new-tab" "https://127.0.0.1:8000"
-# pipenv shell python manage.py runsslserver
+printf "\nLaunching local server https://127.0.0.1:8000/\n\n"
+
+
+open -n -a /Applications/Firefox.app --args "--new-tab" "https://127.0.0.1:8000/"
 poetry run python manage.py runsslserver

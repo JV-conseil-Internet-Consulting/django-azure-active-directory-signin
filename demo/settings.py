@@ -195,7 +195,6 @@ AZURE_SIGNIN = {
     "CLIENT_ID": os.environ.get("AZAD_CLIENT_ID"),
     "CLIENT_SECRET": os.environ.get("AZAD_SECRET_ID"),
     "TENANT_ID": os.environ.get("AZAD_TENANT_ID"),
-    "USER_IDENTIFIER_FIELD": "email",
     "RENAME_ATTRIBUTES": [
         ("employeeNumber", "employee_id"),
         ("sduAppKtoOmkostningssted", "omk2"),

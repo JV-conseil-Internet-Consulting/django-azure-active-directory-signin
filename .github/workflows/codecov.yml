@@ -1,26 +1,4 @@
-# name: CodeCov
-# on: [push, pull_request]
-# jobs:
-#   run:
-#     runs-on: ubuntu-latest
-#     env:
-#       OS: ubuntu-latest
-#       PYTHON: '3.9'
-#     steps:
-#     - uses: actions/checkout@v2
-#       with:
-#         fetch-depth: ‘2’
-
-#     - name: Setup Python
-#       uses: actions/setup-python@master
-#       with:
-#         python-version: 3.7
-#     - name: Generate Report
-#       run: |
-#         pip install coverage[toml]
-#         coverage run -m unittest
-#     - name: Upload Coverage to Codecov
-#       uses: codecov/codecov-action@v2
+# Generate coverage.xml report and upload it to Codecov
 
 name: Codecov
 on: [push]
@@ -42,16 +20,13 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Generate coverage report
       run: pytest --cov=./ --cov-report=xml
-    - name: Upload coverage to Codecov
+    - name: Upload coverage.xml to Codecov
       uses: codecov/codecov-action@v3
       with:
         # token: ${{ secrets.CODECOV_TOKEN }}
-        # directory: ./coverage/reports/
         env_vars: OS,PYTHON
         fail_ci_if_error: true
-        # files: ./coverage1.xml,./coverage2.xml
         files: ./coverage.xml
         flags: unittests
         name: codecov-umbrella
-        # path_to_write_report: ./coverage/codecov_report.txt
         verbose: true
