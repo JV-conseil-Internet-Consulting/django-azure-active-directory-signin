@@ -19,9 +19,6 @@
         {
             "label": "Install",
             "type": "shell",
-            "presentation": {
-                "focus": true
-            },
             "osx": {
                 "command": ".bash/install.sh && .bash/launch.sh"
             },
@@ -35,9 +32,6 @@
         {
             "label": "PyPi",
             "type": "shell",
-            "presentation": {
-                "focus": true
-            },
             "osx": {
                 "command": ".bash/pypi.sh"
             },
@@ -49,7 +43,11 @@
             "type": "shell",
             "command": ".bash/tests.sh",
             "detail": "Run PyTest",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }
