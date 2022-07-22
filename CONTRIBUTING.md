@@ -1,30 +1,28 @@
-# Contributing to Django Azure Active Directory Sign-In 🔑
+# Contributing to Django Azure Active Directory Sign-In 🔑  <!-- omit in toc -->
 
 First off, thanks for taking the time to contribute!
 
 The following is a set of guidelines for contributing to this repo on GitHub.<!-- These are mostly guidelines, not rules. Use your best judgement, and feel free to propose changes to this document in a pull request.-->
 
-#### Table of contents
+## Table of contents  <!-- omit in toc -->
 
-- [Contributing to Django Azure Active Directory Sign-In 🔑](#contributing-to-django-azure-active-directory-sign-in-)
-      - [Table of contents](#table-of-contents)
-  - [How to contribute](#how-to-contribute)
-    - [Reporting bugs](#reporting-bugs)
-      - [Before submitting a bug report](#before-submitting-a-bug-report)
-      - [How do I submit a bug report?](#how-do-i-submit-a-bug-report)
-    - [Suggesting enhancements](#suggesting-enhancements)
-      - [Before submitting an enhancement suggestion](#before-submitting-an-enhancement-suggestion)
-      - [How do I submit an Enhancement suggestion?](#how-do-i-submit-an-enhancement-suggestion)
-    - [Contributing to documentation](#contributing-to-documentation)
-    - [Contributing to code](#contributing-to-code)
-      - [Picking an issue](#picking-an-issue)
-      - [Local development](#local-development)
-      - [Pull requests](#pull-requests)
-    - [Issue triage](#issue-triage)
-      - [Triage steps](#triage-steps)
-    - [Git Workflow](#git-workflow)
-      - [Release branch](#release-branch)
-      - [Bug fix branch](#bug-fix-branch)
+- [How to contribute](#how-to-contribute)
+  - [Reporting bugs](#reporting-bugs)
+    - [Before submitting a bug report](#before-submitting-a-bug-report)
+    - [How do I submit a bug report?](#how-do-i-submit-a-bug-report)
+  - [Suggesting enhancements](#suggesting-enhancements)
+    - [Before submitting an enhancement suggestion](#before-submitting-an-enhancement-suggestion)
+    - [How do I submit an Enhancement suggestion?](#how-do-i-submit-an-enhancement-suggestion)
+  - [Contributing to documentation](#contributing-to-documentation)
+  - [Contributing to code](#contributing-to-code)
+    - [Picking an issue](#picking-an-issue)
+    - [Local development](#local-development)
+    - [Pull requests](#pull-requests)
+  - [Issue triage](#issue-triage)
+    - [Triage steps](#triage-steps)
+  - [Git Workflow](#git-workflow)
+    - [Release branch](#release-branch)
+    - [Bug fix branch](#bug-fix-branch)
 
 ## How to contribute
 
