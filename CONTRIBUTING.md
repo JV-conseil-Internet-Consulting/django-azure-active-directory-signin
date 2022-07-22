@@ -33,58 +33,58 @@ The following is a set of guidelines for contributing to this repo on GitHub.<!-
 This section guides you through submitting a bug report.
 Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
 
-Before creating bug reports, please check [this list](#before-submitting-a-bug-report) to be sure that you need to create one. When you are creating a bug report, please include as many details as possible. Fill out the [required template](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/master/.github/ISSUE_TEMPLATE/---bug-report.md), the information it asks helps the maintainers resolve the issue faster.
+Before creating bug reports, please check [this list](#before-submitting-a-bug-report) to be sure that you need to create one. When you are creating a bug report, please include as many details as possible. Fill out the Bug Report template, the information it asks helps the maintainers resolve the issue faster.
 
 > **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
 
 #### Before submitting a bug report
 
-* **Check the [Documentation](https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin/)** for a list of common questions and problems.
-* **Check that your issue does not already exist in the [issue tracker](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues)**.
+- **Check the [Documentation][documentation]** for a list of common questions and problems.
+- **Check that your issue does not already exist in the [issue tracker][issues]**.
 
 #### How do I submit a bug report?
 
-Bugs are tracked on the [official issue tracker](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues) where you can create a new one and provide the following information by filling in [the template](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/master/.github/ISSUE_TEMPLATE/---bug-report.md).
+Bugs are tracked on the [official issue tracker][issues] where you can create a new one and provide the following information by filling in the Bug Report template.
 
 Explain the problem and include additional details to help maintainers reproduce the problem:
 
-* **Use a clear and descriptive title** for the issue to identify the problem.
-* **Describe the exact steps which reproduce the problem** in as many details as possible.
-* **Provide your pyproject.toml file** in a [Gist](https://gist.github.com) after removing potential private information (like private package repositories).
-* **Provide specific examples to demonstrate the steps to reproduce the issue**. Include links to files or GitHub projects, or copy-paste-able snippets, which you use in those examples.
-* **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
-* **Explain which behavior you expected to see instead and why.**
-* **If the problem is an unexpected error being raised**, execute the corresponding command in **debug** mode (the `DEBUG = True` in settings).
+- **Use a clear and descriptive title** for the issue to identify the problem.
+- **Describe the exact steps which reproduce the problem** in as many details as possible.
+- **Provide your pyproject.toml file** in a [Gist](https://gist.github.com) after removing potential private information (like private package repositories).
+- **Provide specific examples to demonstrate the steps to reproduce the issue**. Include links to files or GitHub projects, or copy-paste-able snippets, which you use in those examples.
+- **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
+- **Explain which behavior you expected to see instead and why.**
+- **If the problem is an unexpected error being raised**, execute the corresponding command in **debug** mode (the `DEBUG = True` in settings).
 
 Provide more context by answering these questions:
 
-* **Did the problem start happening recently** (e.g. after updating to a new version) or was this always a problem?
-* If the problem started happening recently, **can you reproduce the problem in an older version?** What's the most recent version in which the problem doesn't happen?
-* **Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens.
+- **Did the problem start happening recently** (e.g. after updating to a new version) or was this always a problem?
+- If the problem started happening recently, **can you reproduce the problem in an older version?** What's the most recent version in which the problem doesn't happen?
+- **Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens.
 
 Include details about your configuration and environment:
 
-* **What's the name and version of the OS you're using**?
+- **What's the name and version of the OS you're using**?
 
 ### Suggesting enhancements
 
 This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion and find related suggestions.
 
-Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don't need to create one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-an-enhancement-suggestion). Fill in [the template](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/master/.github/ISSUE_TEMPLATE/---feature-request.md), including the steps that you imagine you would take if the feature you're requesting existed.
+Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don't need to create one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-an-enhancement-suggestion). Fill in the Bug Report template, including the steps that you imagine you would take if the feature you're requesting existed.
 
 #### Before submitting an enhancement suggestion
 
-* **Check the [Documentation](https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin)** for a list of common questions and problems.
-* **Check that your issue does not already exist in the [issue tracker](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues)**.
+- **Check the [Documentation][documentation]** for a list of common questions and problems.
+- **Check that your issue does not already exist in the [issue tracker][issues]**.
 
 #### How do I submit an Enhancement suggestion?
 
-Enhancement suggestions are tracked on the [official issue tracker](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues) where you can create a new one and provide the following information:
+Enhancement suggestions are tracked on the [official issue tracker][issues] where you can create a new one and provide the following information:
 
-* **Use a clear and descriptive title** for the issue to identify the suggestion.
-* **Provide a step-by-step description of the suggested enhancement** in as many details as possible.
-* **Provide specific examples to demonstrate the steps**..
-* **Describe the current behavior** and **explain which behavior you expected to see instead** and why.
+- **Use a clear and descriptive title** for the issue to identify the suggestion.
+- **Provide a step-by-step description of the suggested enhancement** in as many details as possible.
+- **Provide specific examples to demonstrate the steps**..
+- **Describe the current behavior** and **explain which behavior you expected to see instead** and why.
 
 ### Contributing to documentation
 
@@ -102,7 +102,7 @@ Issues pertaining to the documentation are usually marked with the [documentatio
 
 #### Local development
 
-Refer to the [documentation](https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin) to start using this project.
+Refer to the [documentation][documentation] to start using this project.
 
 > **Note:** Local development requires Python 3.9 or newer.
 
@@ -121,9 +121,9 @@ will not be merged.
 
 #### Pull requests
 
-* Fill in [the required template](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
-* Be sure that your pull request contains tests that cover the changed or added code.
-* If your changes warrant a documentation change, the pull request must also update the documentation.
+- Fill in [the required template](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
+- Be sure that your pull request contains tests that cover the changed or added code.
+- If your changes warrant a documentation change, the pull request must also update the documentation.
 
 > **Note:** Make sure your branch is [rebased](https://docs.github.com/en/free-pro-team@latest/github/using-git/about-git-rebase) against the latest main branch. A maintainer might ask you to ensure the branch is
 > up-to-date prior to merging your Pull Request if changes have conflicts.
@@ -184,3 +184,13 @@ case-by-case basis.
 1. If the issue affects the next minor/major release, a corresponding fix has been accepted into the main branch.
 
 > **Note:** This is subject to the interpretation of a maintainer within the context of the issue.
+
+<!-- Definitions -->
+
+[conduct]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/main/CODE_OF_CONDUCT.md
+
+[contributing]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/main/CONTRIBUTING.md
+
+[documentation]: https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin/
+
+[issues]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues
