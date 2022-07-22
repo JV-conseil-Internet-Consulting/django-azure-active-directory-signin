@@ -186,9 +186,6 @@ case-by-case basis.
 <!-- Definitions -->
 
 [conduct]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/main/CODE_OF_CONDUCT.md
-
 [contributing]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/blob/main/CONTRIBUTING.md
-
 [documentation]: https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin/
-
 [issues]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues

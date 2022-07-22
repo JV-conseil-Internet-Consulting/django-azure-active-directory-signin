@@ -14,20 +14,20 @@ source ".bash/bash_alias.sh"
 
 cd "$FOLDER_PATH" || exit
 
-__current_version="v$(poetry version --short)"
+__current_version="$(poetry version --short)"
 __github_tags="$(git tag --list --column --sort tag)"
 
-echo -e "\n\e[0;35mRunning poetry build for ${__current_version}...\e[0;0m\n"
+echo -e "\n\e[0;35mRunning poetry build for v${__current_version}...\e[0;0m\n"
 
 poetry build -vvv
 
-echo -e "\n\e[0;35mRunning a publish dry run of ${__current_version} before publishing it to PyPI...\e[0;0m"
+echo -e "\n\e[0;35mRunning a publish dry run of v${__current_version} before publishing it to PyPI...\e[0;0m"
 
 poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --dry-run -vvv
 
 if [[ $__github_tags =~ $__current_version ]]
 then
-   echo -e "\n\e[37;41mYou should update the version number in pyproject.toml file... ${__current_version} is already released on GitHub: ${__github_tags}\e[0;0m"
+   echo -e "\n\e[37;41mYou should update the version number in pyproject.toml file... v${__current_version} is already released on GitHub: ${__github_tags}\e[0;0m"
    exit 2
 fi
 
@@ -48,7 +48,7 @@ read -r -n 1
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    echo -e "\n\e[0;35mPushing release ${__current_version} to GitHub...\e[0;0m\n"
+    echo -e "\n\e[0;35mPushing release v${__current_version} to GitHub...\e[0;0m\n"
 
 
     git tag --annotate "${__current_version}" --message "${__current_version} release"
