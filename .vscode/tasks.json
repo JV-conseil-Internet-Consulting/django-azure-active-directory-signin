@@ -8,7 +8,7 @@
             "type": "shell",
             "isBackground": true,
             "osx": {
-                "command": ".bash/launch.sh",
+                "command": ".bash/launch.sh"
             },
             "runOptions": {
                 "runOn": "folderOpen"
@@ -20,22 +20,26 @@
             "label": "Install",
             "type": "shell",
             "presentation": {
-                "showReuseMessage": false
+                "focus": true
             },
             "osx": {
-                "command": ".bash/install.sh && .bash/launch.sh",
+                "command": ".bash/install.sh && .bash/launch.sh"
             },
             "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "PyPi",
             "type": "shell",
             "presentation": {
-                "showReuseMessage": false
+                "focus": true
             },
             "osx": {
-                "command": ".bash/pypi.sh",
+                "command": ".bash/pypi.sh"
             },
             "detail": "Publish this project to Pypi",
             "problemMatcher": []

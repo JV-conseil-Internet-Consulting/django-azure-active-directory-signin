@@ -15,9 +15,7 @@ source ".bash/bash_alias.sh"
 
 cd "$FOLDER_PATH" || exit
 
-
-printf "\nLaunching local server https://127.0.0.1:8000/\n\n"
-
+echo -e "\n\e[0;35mLaunching local server...\e[0;0m https://127.0.0.1:8000/\n"
 
 open -n -a /Applications/Firefox.app --args "--new-tab" "https://127.0.0.1:8000/"
 poetry run python manage.py runsslserver
