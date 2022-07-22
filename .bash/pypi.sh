@@ -43,8 +43,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\n\e[0;35mPushing release v${__current_version} to GitHub...\e[0;0m\n"
 
+
     git tag --annotate "${__current_version}" --message "${__current_version} release"
-    git push origin --tags --verbose
+    git push origin "${__current_version}" --verbose
 
     echo -e "\n\e[0;35mPushing release v${__current_version} to PyPi...\e[0;0m https://pypi.org/project/django-azure-active-directory-signin/"
 
