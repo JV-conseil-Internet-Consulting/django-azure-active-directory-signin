@@ -9,4 +9,4 @@ answering questions to help others on issues, improving the documentation, are
 all priceless contributions.
 
 We abide by the principles of openness, respect, and consideration of others of
-the Python Software Foundation: <https://www.python.org/psf/codeofconduct/>.
+the Python Software Foundation :point_right: <https://www.python.org/psf/codeofconduct/>.

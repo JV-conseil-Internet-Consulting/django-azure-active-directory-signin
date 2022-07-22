@@ -73,9 +73,9 @@ AZURE_SIGNIN = {
         ("employeeNumber", "employee_id"),
         ("affiliationNumber", "omk2"),
     ],  # Optional
-    "REDIRECT_URI": "https://<domain>/azure_signin/callback",  # Optional
+    "REDIRECT_URI": "https://<domain>/azure-signin/callback",  # Optional
     "SCOPES": ["User.Read.All"],  # Optional
-    "AUTHORITY": "https://login.microsoftonline.com/<tenant id>",  # Optional Or https://login.microsoftonline.com/common if multi-tenant
+    "AUTHORITY": "https://login.microsoftonline.com/" + os.environ.get("TENANT_ID"),  # Optional Or https://login.microsoftonline.com/common if multi-tenant
     "LOGOUT_REDIRECT_URI": "https://<domain>/logout",  # Optional
     "PUBLIC_URLS": ["<public:view_name>",]  # Optional, public views accessible by non-authenticated users
 }
