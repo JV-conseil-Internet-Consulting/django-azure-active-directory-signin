@@ -164,7 +164,7 @@ class CustomAzureSigninBackend(AzureSigninBackend):
         "is_valid_user"
         output = super().is_valid_user(user, *args, **kwargs)
         try:
-            "run extra tests here..."
+            "run extra checks here..."
             pass
         except Exception as e:
             logger.exception(e)
