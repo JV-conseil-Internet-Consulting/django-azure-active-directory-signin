@@ -1,8 +1,8 @@
-# Contributing to Django Azure Active Directory Sign-In 🔑  <!-- omit in toc -->
+# Contributing  <!-- omit in toc -->
 
 First off, thanks for taking the time to contribute!
 
-The following is a set of guidelines for contributing to this repo on GitHub.<!-- These are mostly guidelines, not rules. Use your best judgement, and feel free to propose changes to this document in a pull request.-->
+The following is a set of guidelines for contributing to this repo on GitHub.
 
 ## Table of contents  <!-- omit in toc -->
 
