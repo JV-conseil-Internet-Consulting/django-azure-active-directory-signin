@@ -55,6 +55,9 @@ pytest-django = "^4.5.2"
 "Donate" = "https://www.paypal.com/donate/?hosted_button_id=P3DGL6EANDY96"
 "Sponsor" = "https://github.com/sponsors/JV-conseil-Internet-Consulting"
 
+[tool.black]
+line-length = 88
+
 [tool.pytest.ini_options]
 addopts = "--cov . -v --cov-report=html"
 DJANGO_SETTINGS_MODULE = "tests.settings"
