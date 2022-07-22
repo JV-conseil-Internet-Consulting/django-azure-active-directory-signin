@@ -54,7 +54,7 @@ then
     git tag --annotate "${__current_version}" --message "${__current_version} release"
     git push origin "${__current_version}" --verbose
 
-    echo -e "\n\e[0;35mPushing release ${__current_version} to PyPi...\e[0;0m https://pypi.org/project/django-azure-active-directory-signin/"
+    echo -e "\n\e[0;35mPushing release v${__current_version} to PyPi...\e[0;0m https://pypi.org/project/django-azure-active-directory-signin/"
 
     poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" -vvv
 fi
