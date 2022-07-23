@@ -1,53 +1,62 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Launch",
-            "type": "shell",
-            "isBackground": true,
-            "osx": {
-                "command": ".bash/launch.sh"
-            },
-            "runOptions": {
-                "runOn": "folderOpen"
-            },
-            "detail": "Launch a Django Virtual Environment for this project",
-            "problemMatcher": []
-        },
-        {
-            "label": "Install",
-            "type": "shell",
-            "osx": {
-                "command": ".bash/install.sh && .bash/launch.sh"
-            },
-            "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "PyPi",
-            "type": "shell",
-            "osx": {
-                "command": ".bash/pypi.sh"
-            },
-            "detail": "Publish this project to Pypi",
-            "problemMatcher": []
-        },
-        {
-            "label": "Test",
-            "type": "shell",
-            "command": ".bash/tests.sh",
-            "detail": "Run PyTest",
-            "problemMatcher": [],
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            }
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Launch",
+      "type": "shell",
+      "isBackground": true,
+      "osx": {
+        "command": ".bash/launch.sh"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "detail": "Launch a Django Virtual Environment for this project",
+      "problemMatcher": []
+    },
+    {
+      "label": "Install",
+      "type": "shell",
+      "osx": {
+        "command": ".bash/install.sh && .bash/launch.sh"
+      },
+      "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "PyPi",
+      "type": "shell",
+      "osx": {
+        "command": ".bash/pypi.sh"
+      },
+      "detail": "Publish this project to Pypi",
+      "problemMatcher": []
+    },
+    {
+      "label": "Update",
+      "type": "shell",
+      "osx": {
+        "command": ".bash/update.sh"
+      },
+      "detail": "Udpate dependencies.",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test",
+      "type": "shell",
+      "command": ".bash/tests.sh",
+      "detail": "Run PyTest",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ]
 }

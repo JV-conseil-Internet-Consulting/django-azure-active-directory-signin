@@ -1,11 +1,31 @@
+<!-- markdownlint-disable-file MD024 -->
+
 # Change Log
 
-# [0.1.7] - 2022-07-22
+## [0.1.8] - 2022-07-2x
+
+### Added
+
+- Added `udpate` command to VS Code Tasks list.
+
+### Changed
+
+- ...
+
+### Fixed
+
+- ...
+
+### Docs
+
+- ...
+
+## [0.1.7] - 2022-07-22
 
 ### Added
 
 - Added `update_user_attributes` to the `AzureSigninBackend`.
-- ...
+- Added `udpate` command to VS Code Tasks list.
 
 ### Changed
 
@@ -26,5 +46,6 @@ Initial release
 <!-- Definition -->
 
 [documentation]: https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin/
+[0.1.7]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.8
 [0.1.7]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.7
 [0.1.0]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/v0.1.0
