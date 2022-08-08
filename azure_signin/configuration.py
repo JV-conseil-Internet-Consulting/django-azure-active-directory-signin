@@ -1,5 +1,5 @@
-from functools import lru_cache
 import logging
+from functools import lru_cache
 from types import SimpleNamespace
 
 from django.conf import settings

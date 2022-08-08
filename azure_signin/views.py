@@ -18,8 +18,8 @@ def azure_signin_logout(request):
     return HttpResponseRedirect(AzureSigninHandler(request).get_logout_uri())
 
 
-def _azure_signin_callback(request):
-    "_azure_signin_callback"
+def azure_signin_callback(request):
+    "azure_signin_callback"
     output = HttpResponseForbidden("Invalid Authentication Token.")
     try:
         token = AzureSigninHandler(request).get_token_from_flow()
@@ -33,8 +33,8 @@ def _azure_signin_callback(request):
     return output
 
 
-def azure_signin_callback(request):
-    "azure_signin_callback to handle Django success/error messages"
+def azure_signin_redirect(request):
+    "azure_signin_redirect to handle Django success/error messages"
     output = HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
     try:
         token = AzureSigninHandler(request).get_token_from_flow()

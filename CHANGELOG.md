@@ -9,6 +9,7 @@
 - Added `update` command to VS Code Tasks list.
 - Added `SAVE_ID_TOKEN_CLAIMS` to settings.
 - Added support for `messages` from `django.contrib`.
+- Added `azure_signin_redirect` to `azure_signin.views`.
 
 ### Changed
 

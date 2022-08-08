@@ -4,20 +4,21 @@ from unittest.mock import patch
 
 import msal
 import pytest
+from mixer.backend.django import Mixer
+
+from azure_signin.configuration import _AzureSigninConfig
+from azure_signin.exceptions import InvalidAuthenticationToken, TokenError
+from azure_signin.handlers import AzureSigninHandler
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.test import TestCase, TransactionTestCase, override_settings
 from django.urls import reverse
-from mixer.backend.django import Mixer
-
-from azure_signin.exceptions import InvalidAuthenticationToken, TokenError
-from azure_signin.handlers import AzureSigninHandler
-
-from azure_signin.configuration import _AzureSigninConfig
 
 UserModel = get_user_model()
 
-AzureSigninTestConfig = _AzureSigninConfig(config=settings.AZURE_SIGNIN).parse_settings()
+AzureSigninTestConfig = _AzureSigninConfig(
+    config=settings.AZURE_SIGNIN
+).parse_settings()
 AzureSigninTestConfig.REDIRECT_URI = "http://testserver/azure-signin/callback"
 AzureSigninTestConfig.LOGOUT_REDIRECT_URI = "http://testserver/"
 
@@ -45,6 +46,8 @@ class TestLoginView(TestCase):
             authority=AzureSigninTestConfig.AUTHORITY,
             # Don't care about the `token_cache` object so just pipe it in
             token_cache=mocked_msal_app.call_args.kwargs["token_cache"],
+            validate_authority="login.microsoftonline.com"
+            in AzureSigninTestConfig.AUTHORITY,
         )
 
         mocked_msal_app.return_value.initiate_auth_code_flow.assert_called_once_with(
@@ -96,6 +99,8 @@ class TestCallbackView(TransactionTestCase):
             authority=AzureSigninTestConfig.AUTHORITY,
             # Don't care about the `token_cache` object so just pipe it in
             token_cache=mocked_msal_app.call_args.kwargs["token_cache"],
+            validate_authority="login.microsoftonline.com"
+            in AzureSigninTestConfig.AUTHORITY,
         )
         m_acf = mocked_msal_app.return_value.acquire_token_by_auth_code_flow
         m_acf.assert_called_once_with(
