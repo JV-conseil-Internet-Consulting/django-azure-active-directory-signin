@@ -1,11 +1,15 @@
 import logging
+from functools import cached_property
+from types import SimpleNamespace
 
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
+from django.utils.html import format_html
 
+from .configuration import AzureSigninConfig, _AzureSigninConfig
 from .handlers import AzureSigninHandler
-from .configuration import _AzureSigninConfig, AzureSigninConfig
 
 UserModel = get_user_model()
 
@@ -16,6 +20,32 @@ class AzureSigninBackend(ModelBackend):
     """
     Authenticates against settings.AUTH_USER_MODEL.
     """
+
+    # @cached_property
+    @property
+    def message(self, *args, **kwargs) -> object:
+        "message"
+        output = SimpleNamespace(
+            **{
+                "error": AzureSigninConfig.MESSAGE_ERROR,
+                "success": AzureSigninConfig.MESSAGE_SUCCESS,
+            }
+        )
+        try:
+            output.error = format_html(
+                output.error
+                + (
+                    '<br>{error} <a href="{link}" target="_blank"'
+                    ' title="{error}">by visiting this link&nbsp;<i class="fas'
+                    ' fa-external-link-square-alt align-middle me-2"></i></a>'
+                ),
+                error="You may try also to logout from all your active sessions",
+                link="https://www.office.com.mcas.ms/login?prompt=select_account",
+            )
+        except Exception as e:
+            logger.exception(e)
+        logger.debug("message: %s", output)
+        return output
 
     def is_valid_user(self, user: dict, *args, **kwargs) -> bool:
         "is_valid_user"
@@ -77,11 +107,15 @@ class AzureSigninBackend(ModelBackend):
                 return output
 
             user_ = AzureSigninHandler(request).user_django_mapping(token)
+            # user_["username"] = "jv-jvc"
+            # user_["email"] = "julien@jv-conseil.net"
 
             if not user_:
+                messages.error(request, self.message.error)
                 return output
 
             if not self.is_valid_user(user_):
+                messages.error(request, self.message.error)
                 return output
 
             try:
@@ -92,11 +126,19 @@ class AzureSigninBackend(ModelBackend):
                 user.save()
 
             if not self.user_can_authenticate(user):
+                messages.error(request, self.message.error)
                 return output
 
+            messages.success(
+                request,
+                format_html(
+                    self.message.success, first_name=user_.get("first_name", "")
+                ),
+            )
             output = user
 
         except Exception as e:
+            messages.error(request, self.message.error)
             logger.exception(e)
         logger.debug("authenticate: %s", output)
         return output

@@ -37,6 +37,14 @@ class _AzureSigninConfig:
         config["LOGOUT_REDIRECT_URI"] = config.get(
             "LOGOUT_REDIRECT_URI", settings.LOGOUT_REDIRECT_URL
         )
+        config["MESSAGE_SUCCESS"] = config.get(
+            "MESSAGE_SUCCESS",
+            "Welcome <b>{first_name}</b> &#128075; you now are logged in.",
+        )
+        config["MESSAGE_ERROR"] = config.get(
+            "MESSAGE_ERROR", "An error occured, we cannot sign you in."
+        )
+        config["SAVE_ID_TOKEN_CLAIMS"] = config.get("SAVE_ID_TOKEN_CLAIMS", False)
         for list_key in ["SCOPES"]:
             config[list_key] = config.get(list_key, [])
         self.config = config
@@ -65,6 +73,8 @@ class _AzureSigninConfig:
         is_string = required + (
             "LOGOUT_REDIRECT_URI",
             "LOGOUT_URI",
+            "MESSAGE_ERROR",
+            "MESSAGE_SUCCESS",
             "REDIRECT_URI",
         )
         for req in is_string:
@@ -79,6 +89,13 @@ class _AzureSigninConfig:
             if not req_:
                 continue
             assert list(req_), f"{req} must be non-empty list"
+
+        is_bool = ("SAVE_ID_TOKEN_CLAIMS",)
+        for req in is_bool:
+            req_ = self.config.get(req)
+            if not req_:
+                continue
+            assert isinstance(req_, bool), f"{req} must be bool"
 
 
 AzureSigninConfig = _AzureSigninConfig(config=settings.AZURE_SIGNIN).parse_settings()

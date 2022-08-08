@@ -1,7 +1,6 @@
-from django.urls import reverse
-from django.conf import settings
-
 from azure_signin.configuration import AzureSigninConfig
+from django.conf import settings
+from django.urls import reverse
 
 
 def context(request):
