@@ -191,29 +191,18 @@ INSTALLED_APPS += [
     "azure_signin",
 ]
 
-# AZURE_SIGNIN = {
-#     "CLIENT_ID": os.environ.get("AZAD_CLIENT_ID"),
-#     "CLIENT_SECRET": os.environ.get("AZAD_CLIENT_SECRET"),
-#     "TENANT_ID": os.environ.get("AZAD_TENANT_ID"),
-#     "RENAME_ATTRIBUTES": [
-#         ("employeeNumber", "employee_id"),
-#         ("sduAppKtoOmkostningssted", "omk2"),
-#         ("sduAppDKDepartmentNumber", "hcm"),
-#     ],
-#     "SAVE_ID_TOKEN_CLAIMS": True,
-# }
-
 AZURE_SIGNIN = {
-    "CLIENT_ID": os.environ.get("ORCID_CLIENT_ID"),
-    "CLIENT_SECRET": os.environ.get("ORCID_CLIENT_SECRET"),
-    "AUTHORITY": "https://orcid.org/oauth/authorize",
+    "CLIENT_ID": os.environ.get("AZAD_CLIENT_ID"),
+    "CLIENT_SECRET": os.environ.get("AZAD_CLIENT_SECRET"),
+    "TENANT_ID": os.environ.get("AZAD_TENANT_ID"),
     "RENAME_ATTRIBUTES": [
         ("employeeNumber", "employee_id"),
         ("sduAppKtoOmkostningssted", "omk2"),
         ("sduAppDKDepartmentNumber", "hcm"),
     ],
-    # "SAVE_ID_TOKEN_CLAIMS": True,
+    "SAVE_ID_TOKEN_CLAIMS": True,
 }
+
 
 AUTHENTICATION_BACKENDS += [
     "azure_signin.backends.AzureSigninBackend",
