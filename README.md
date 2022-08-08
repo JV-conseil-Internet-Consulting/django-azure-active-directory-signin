@@ -69,6 +69,7 @@ AZURE_SIGNIN = {
     "CLIENT_ID": os.environ.get("CLIENT_ID"),  # Mandatory
     "CLIENT_SECRET": os.environ.get("CLIENT_SECRET"),  # Mandatory
     "TENANT_ID": os.environ.get("TENANT_ID"),  # Mandatory
+    "SAVE_ID_TOKEN_CLAIMS": True,  # Optional, default is False.
     "RENAME_ATTRIBUTES": [
         ("employeeNumber", "employee_id"),
         ("affiliationNumber", "omk2"),

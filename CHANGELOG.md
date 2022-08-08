@@ -6,7 +6,9 @@
 
 ### Added
 
-- Added `udpate` command to VS Code Tasks list.
+- Added `update` command to VS Code Tasks list.
+- Added `SAVE_ID_TOKEN_CLAIMS` to settings.
+- Added support for `messages` from `django.contrib`.
 
 ### Changed
 
@@ -18,7 +20,7 @@
 
 ### Docs
 
-- ...
+- `SAVE_ID_TOKEN_CLAIMS`.
 
 ## [0.1.7] - 2022-07-22
 
@@ -46,6 +48,6 @@ Initial release
 <!-- Definition -->
 
 [documentation]: https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin/
-[0.1.7]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.8
+[0.1.8]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.8
 [0.1.7]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.7
 [0.1.0]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/v0.1.0
