@@ -191,21 +191,28 @@ INSTALLED_APPS += [
     "azure_signin",
 ]
 
+# AZURE_SIGNIN = {
+#     "CLIENT_ID": os.environ.get("AZAD_CLIENT_ID"),
+#     "CLIENT_SECRET": os.environ.get("AZAD_CLIENT_SECRET"),
+#     "TENANT_ID": os.environ.get("AZAD_TENANT_ID"),
+#     "RENAME_ATTRIBUTES": [
+#         ("employeeNumber", "employee_id"),
+#         ("sduAppKtoOmkostningssted", "omk2"),
+#         ("sduAppDKDepartmentNumber", "hcm"),
+#     ],
+#     "SAVE_ID_TOKEN_CLAIMS": True,
+# }
+
 AZURE_SIGNIN = {
-    "CLIENT_ID": os.environ.get("AZAD_CLIENT_ID"),
-    "CLIENT_SECRET": os.environ.get("AZAD_SECRET_ID"),
-    "TENANT_ID": os.environ.get("AZAD_TENANT_ID"),
+    "CLIENT_ID": os.environ.get("ORCID_CLIENT_ID"),
+    "CLIENT_SECRET": os.environ.get("ORCID_CLIENT_SECRET"),
+    "AUTHORITY": "https://orcid.org/oauth/authorize",
     "RENAME_ATTRIBUTES": [
         ("employeeNumber", "employee_id"),
         ("sduAppKtoOmkostningssted", "omk2"),
         ("sduAppDKDepartmentNumber", "hcm"),
     ],
-    # Permissions
-    # https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions
-    "SCOPES": [
-        "User.Read",
-        "User.ReadBasic.All",
-    ],
+    # "SAVE_ID_TOKEN_CLAIMS": True,
 }
 
 AUTHENTICATION_BACKENDS += [

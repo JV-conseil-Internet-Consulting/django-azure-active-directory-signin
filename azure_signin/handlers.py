@@ -3,6 +3,7 @@ from http import HTTPStatus
 
 import msal
 import requests
+
 from django.urls import reverse
 
 from .configuration import AzureSigninConfig
@@ -128,11 +129,13 @@ class AzureSigninHandler:
                     client_credential=AzureSigninConfig.CLIENT_SECRET,
                     authority=AzureSigninConfig.AUTHORITY,
                     token_cache=self.cache,
+                    validate_authority="login.microsoftonline.com"
+                    in AzureSigninConfig.AUTHORITY,
                 )
             output = self._msal_app
         except Exception as e:
             logger.exception(e)
-        logger.debug("generic_function: %s", output)
+        logger.debug("msal_app: %s", output)
         return output
 
     @property
@@ -176,12 +179,18 @@ class AzureSigninHandler:
                 value = dct.get(bad)
                 if not value:
                     continue
+
                 good_ = dct.get(good)
                 if good_ and good_ != value:
                     raise RenameAttributesValueError(
                         f"`{good}` key already exists with value `{good_}`, new value `{value}` is different."
                     )
+
+                "email enforce lower case"
+                if good == "email":
+                    value = value.lower()
                 dct[good] = value
+
             output = dct
         except Exception as e:
             logger.exception(e)
@@ -216,8 +225,13 @@ class AzureSigninHandler:
                     and key
                     in [good for bad, good in AzureSigninConfig.RENAME_ATTRIBUTES]
                 }
+
                 if not output.get("username"):
                     output["username"] = user.get("email", "")
+
+                if AzureSigninConfig.SAVE_ID_TOKEN_CLAIMS:
+                    user.pop("@odata.context", "")
+                    output["id_token_claims"] = user
         except Exception as e:
             logger.exception(e)
         logger_debug("user_django_mapping", output, logger)
