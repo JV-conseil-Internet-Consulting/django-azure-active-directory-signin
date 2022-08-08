@@ -48,6 +48,15 @@
       "problemMatcher": []
     },
     {
+      "label": "Shell",
+      "type": "shell",
+      "osx": {
+        "command": ".bash/shell.sh"
+      },
+      "detail": "Poetry Shell to run commands like: python manage.py makemigrations.",
+      "problemMatcher": []
+    },
+    {
       "label": "Test",
       "type": "shell",
       "command": ".bash/tests.sh",

@@ -58,6 +58,11 @@ pytest-django = "^4.5.2"
 [tool.black]
 line-length = 88
 
+[tool.isort]
+profile = "black"
+default_section = "THIRDPARTY"
+known_first_party = ["django"]
+
 [tool.pytest.ini_options]
 addopts = "--cov . -v --cov-report=html"
 DJANGO_SETTINGS_MODULE = "tests.settings"
