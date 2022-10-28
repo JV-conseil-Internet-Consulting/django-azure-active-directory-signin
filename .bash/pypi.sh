@@ -28,6 +28,7 @@ poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --dry
 if [[ $__github_tags =~ $__current_version ]]
 then
    echo -e "\n\e[37;41mYou should update the version number in pyproject.toml file... v${__current_version} is already released on GitHub: ${__github_tags}\e[0;0m"
+   echo -e "\nOr alternatively you can delete it with git tag --delete ${__current_version}\n"
    exit 2
 fi
 
@@ -47,9 +48,9 @@ fi
 # Check PyPi status before uploading
 #
 
-echo -e "\n\e[0;35mCheck PyPi status before uploading...\e[0;0m https://status.python.org/\n"
+echo -e "\n\e[0;35mCheck PyPi status\e[0;0m 👉 https://status.python.org/\n\nBefore publishing make sure PyPi is not in Read Only mode for maintenance.\n"
 
-open -n -a /Applications/Firefox.app --args "--new-tab" "https://status.python.org/"
+open -n -a /Applications/Firefox.app --args "--new-tab" "https://pypi.org/"
 
 
 #
