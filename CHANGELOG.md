@@ -2,7 +2,7 @@
 
 # Change Log
 
-## [0.1.8] - 2022-07-2x
+## [0.1.8] - 2022-10-28
 
 ### Added
 
@@ -17,7 +17,7 @@
 
 ### Fixed
 
-- ...
+- Issue #1 with `Poetry` dependencies.
 
 ### Docs
 
