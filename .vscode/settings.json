@@ -22,8 +22,6 @@
   "html.format.indentHandlebars": true,
   "html.format.indentInnerHtml": true,
   "html.format.templating": true,
-  //"python.defaultInterpreterPath": "/usr/local/opt/python@3.9/bin/python3",
-  //"python.envFile": "~/.env/django-azure-active-directory-signin/.env",
   "editor.matchBrackets": "always",
   "editor.bracketPairColorization.enabled": false,
   "[css][scss][less]": {
@@ -40,4 +38,5 @@
   },
   "scss.format.enable": false,
   "scss.format.braceStyle": "collapse",
+  "task.allowAutomaticTasks": "on",
 }

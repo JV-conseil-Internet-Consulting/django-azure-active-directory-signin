@@ -1,5 +1,5 @@
 import logging
-from functools import lru_cache
+from functools import lru_cache, cached_property
 from types import SimpleNamespace
 
 from django.conf import settings
@@ -13,42 +13,55 @@ class _AzureSigninConfig:
     "TODO: Handle if user has put incorrect details in settings"
 
     def __init__(self, config={}, namespace="azure_signin:callback", *args, **kwargs):
-        config["MS_GRAPH_API"] = "https://graph.microsoft.com/v1.0/me"
-        config["RENAME_ATTRIBUTES"] = [
-            ("family_name", "last_name"),
-            ("given_name", "first_name"),
-            ("givenName", "first_name"),
-            ("mail", "email"),
-            ("preferred_username", "username"),
-            ("surname", "last_name"),
-            ("upn", "username"),
-        ] + config.get("RENAME_ATTRIBUTES", [])
-        config["TENANT_ID"] = config.get("TENANT_ID", "common")
-        config["AUTHORITY"] = config.get(
-            "AUTHORITY", "https://login.microsoftonline.com/" + config["TENANT_ID"]
-        )
-        config["LOGOUT_URI"] = config["AUTHORITY"] + "/oauth2/v2.0/logout"
-        config["PUBLIC_URLS"] = [
-            "azure_signin:login",
-            "azure_signin:logout",
-            "azure_signin:callback",
-        ] + config.get("PUBLIC_URLS", [])
-        config["REDIRECT_URI"] = config.get("REDIRECT_URI", namespace)
-        config["LOGOUT_REDIRECT_URI"] = config.get(
-            "LOGOUT_REDIRECT_URI", settings.LOGOUT_REDIRECT_URL
-        )
-        config["MESSAGE_SUCCESS"] = config.get(
-            "MESSAGE_SUCCESS",
-            "Welcome <b>{first_name}</b> &#128075; you now are logged in.",
-        )
-        config["MESSAGE_ERROR"] = config.get(
-            "MESSAGE_ERROR", "An error occured, we cannot sign you in."
-        )
-        config["SAVE_ID_TOKEN_CLAIMS"] = config.get("SAVE_ID_TOKEN_CLAIMS", False)
-        for list_key in ["SCOPES"]:
-            config[list_key] = config.get(list_key, [])
-        self.config = config
-        # logger_debug("config", config)
+        self._config = config
+        self._namespace = namespace
+
+    @cached_property
+    def config(self, *args, **kwargs) -> dict:
+        "config"
+        output = {}
+        try:
+            output = self._config.copy()
+            output["MS_GRAPH_API"] = "https://graph.microsoft.com/v1.0/me"
+            output["RENAME_ATTRIBUTES"] = output.pop("RENAME_ATTRIBUTES", [])
+            output["RENAME_ATTRIBUTES"] += [
+                ("family_name", "last_name"),
+                ("given_name", "first_name"),
+                ("givenName", "first_name"),
+                ("mail", "email"),
+                ("preferred_username", "username"),
+                ("surname", "last_name"),
+                ("upn", "username"),
+            ]
+            output["RENAME_ATTRIBUTES"] = list(set(output["RENAME_ATTRIBUTES"]))
+            output["TENANT_ID"] = output.pop("TENANT_ID", "common")
+            output["AUTHORITY"] = output.pop(
+                "AUTHORITY", "https://login.microsoftonline.com/" + output["TENANT_ID"]
+            )
+            output["LOGOUT_URI"] = output["AUTHORITY"] + "/oauth2/v2.0/logout"
+            output["PUBLIC_URLS"] = [
+                "azure_signin:login",
+                "azure_signin:logout",
+                "azure_signin:callback",
+            ] + output.pop("PUBLIC_URLS", [])
+            output["PUBLIC_URLS"] = list(set(output["PUBLIC_URLS"]))
+            output["REDIRECT_URI"] = output.pop("REDIRECT_URI", self._namespace)
+            output["LOGOUT_REDIRECT_URI"] = output.pop(
+                "LOGOUT_REDIRECT_URI", settings.LOGOUT_REDIRECT_URL
+            )
+            output["MESSAGE_SUCCESS"] = output.pop(
+                "MESSAGE_SUCCESS",
+                "Welcome <b>{first_name}</b> &#128075; you now are logged in.",
+            )
+            output["MESSAGE_ERROR"] = output.pop(
+                "MESSAGE_ERROR", "An error occured, we cannot sign you in."
+            )
+            output["SAVE_ID_TOKEN_CLAIMS"] = output.pop("SAVE_ID_TOKEN_CLAIMS", False)
+            output["SCOPES"] = output.pop("SCOPES", ["User.Read"])
+        except Exception as e:
+            logger.exception(e)
+        # logger_debug("config", output)
+        return output
 
     @lru_cache
     def parse_settings(self, *args, **kwargs):
@@ -67,6 +80,7 @@ class _AzureSigninConfig:
     @lru_cache
     def sanity_check_configs(self) -> None:
         required = ("AUTHORITY", "CLIENT_ID", "CLIENT_SECRET", "TENANT_ID")
+        # required = ("AUTHORITY", "CLIENT_ID", "TENANT_ID")
         for req in required:
             assert self.config.get(req), f"{req} must be non-empty string"
 

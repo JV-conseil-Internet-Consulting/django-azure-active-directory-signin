@@ -12,6 +12,7 @@ class ExtendedUserAdmin(UserAdmin):
         "first_name",
         "email",
         "username",
+        "job_title",
         "hcm",
         "omk2",
         "employee_id",
@@ -20,7 +21,13 @@ class ExtendedUserAdmin(UserAdmin):
     default_fieldsets = UserAdmin.fieldsets
     fieldsets = (
         default_fieldsets[:2]
-        + ((_("Azure SignIn"), {"fields": ("id_token_claims",)}),)
+        + (
+            (
+                _("Institution Information"),
+                {"fields": ("job_title", "employee_id", "hcm", "omk2")},
+            ),
+            (_("Azure SignIn"), {"fields": ("id_token_claims",)}),
+        )
         + default_fieldsets[2:]
     )
 

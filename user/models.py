@@ -12,11 +12,15 @@ class ExtendedUser(AbstractUser):
     """
 
     email = models.EmailField(unique=True, db_index=True)
-    employee_id = models.IntegerField(
-        null=True, default=None, unique=True, blank=True, db_index=True
+    # employee_id = models.IntegerField(
+    #     null=True, default=None, unique=True, blank=True, db_index=True
+    # )
+    employee_id = models.CharField(
+        max_length=50, null=True, default=None, db_index=True
     )
-    omk2 = models.CharField(max_length=5, null=True, default=None, db_index=True)
-    hcm = models.CharField(max_length=7, null=True, default=None, db_index=True)
+    omk2 = models.CharField(max_length=50, null=True, default=None, db_index=True)
+    hcm = models.CharField(max_length=50, null=True, default=None, db_index=True)
+    job_title = models.CharField(max_length=50, default="", db_index=True)
     id_token_claims = models.TextField(default="", blank=True)
 
     def save(self, *args, **kwargs):
