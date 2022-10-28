@@ -42,6 +42,20 @@ else
     echo -e "\n$REPLY\n"
 fi
 
+
+#
+# Check PyPi status before uploading
+#
+
+echo -e "\n\e[0;35mCheck PyPi status before uploading...\e[0;0m https://status.python.org/\n"
+
+open -n -a /Applications/Firefox.app --args "--new-tab" "https://status.python.org/"
+
+
+#
+# Are you ready to publish on PyPI?
+#
+
 echo -e -n "\e[0;33mAre you ready to publish on PyPI? [y/N] "
 echo -e -n '\e[0;0m'
 read -r -n 1
