@@ -1,6 +1,6 @@
 # Django Azure Active Directory Sign-In 🔑
 
-[![Django 4.0.6](https://img.shields.io/badge/Django-4.0.6-green)](https://docs.djangoproject.com/en/4.0/releases/4.0.6/)
+[![Django 4.14](https://img.shields.io/badge/Django-4.1.4-green)](https://docs.djangoproject.com/en/4.0/releases/4.1.4/)
 [![License BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/branch/main/graph/badge.svg?token=WLCTWKAPF6)](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin)
