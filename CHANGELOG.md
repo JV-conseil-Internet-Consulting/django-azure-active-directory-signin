@@ -2,6 +2,20 @@
 
 # Change Log
 
+## [0.1.9] - 2022-12-20
+
+### Added
+
+- Support for `Python3.11`.
+
+### Changed
+
+- ...
+
+### Fixed
+
+- Bumps certifi from 2022.9.24 to 2022.12.7.
+
 ## [0.1.8] - 2022-10-28
 
 ### Added
@@ -49,6 +63,7 @@ Initial release
 <!-- Definition -->
 
 [documentation]: https://jv-conseil-internet-consulting.github.io/django-azure-active-directory-signin/
+[0.1.9]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.9
 [0.1.8]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.8
 [0.1.7]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/0.1.7
 [0.1.0]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/tag/v0.1.0
