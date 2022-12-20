@@ -35,14 +35,15 @@ packages = [
 [tool.poetry.dependencies]
 django = ">=4.*,<5.0"
 msal = ">=1.18.0"
-python = ">=3.9.*,<3.11"
+# python = ">=3.9.*,<3.11"
+python = ">=3.9.*"
 
 [tool.poetry.dev-dependencies]
-black = ">=22.6.0"
+black = ">=22.12.0"
 coverage = {extras = ["toml"], version = ">=6.4.1"}
 django-sslserver = ">=0.22"
-flake8 = ">=4.0.1"
-flake8-isort = ">=4.*"
+flake8 = ">=6.0.0"
+flake8-isort = ">=5.0.3"
 mixer = ">=7.2.2"
 pytest = ">=7.1.2"
 pytest-cov = ">=3.0.0"

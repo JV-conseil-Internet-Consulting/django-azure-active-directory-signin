@@ -3,13 +3,13 @@
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "timonwong.shellcheck",
-    "ms-vscode.azure-account",
-    "ms-azuretools.vscode-azureappservice",
-    "ms-azuretools.vscode-azureresourcegroups",
-    "wakatime.vscode-wakatime",
     "cstrap.python-snippets",
     "xabikos.javascriptsnippets",
     "yzhang.markdown-all-in-one",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "ms-python.isort",
+    "davidanson.vscode-markdownlint",
     "Shopify.theme-check-vscode"
   ]
 }

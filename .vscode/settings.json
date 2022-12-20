@@ -39,4 +39,8 @@
   "scss.format.enable": false,
   "scss.format.braceStyle": "collapse",
   "task.allowAutomaticTasks": "on",
+  "files.eol": "\n",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.windows": "bash",
+  "terminal.integrated.defaultProfile.osx": "bash",
 }

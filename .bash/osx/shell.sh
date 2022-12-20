@@ -10,9 +10,11 @@
 
 
 # shellcheck disable=SC1091
-source ".bash/bash_alias.sh"
+source ".bash/osx/bash_alias.sh"
 
 
 cd "$FOLDER_PATH" || exit
 
-poetry run pytest
+echo -e "\n\e[0;35mPoetry shell...\e[0;0m\n"
+
+poetry shell

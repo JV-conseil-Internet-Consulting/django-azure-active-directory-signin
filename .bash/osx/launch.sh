@@ -9,16 +9,14 @@
 #======================================================================
 
 
-#
-# PATH
-#
-export LANG="en_US.UTF-8"
-export PKG_NAME="django-azure-active-directory-signin"
-export FOLDER_PATH="$HOME/GitHub/JV-conseil-Internet-Consulting/${PKG_NAME}"
+# shellcheck disable=SC1091
+source ".bash/osx/bash_alias.sh"
 
 
-#
-# ENV
-#
-# shellcheck disable=SC1090,SC1091
-source "$HOME/.env/${PKG_NAME}/.env"
+cd "$FOLDER_PATH" || exit
+
+echo -e "\n\e[0;35mLaunching local server...\e[0;0m https://127.0.0.1:8000/\n"
+
+open -n -a /Applications/Firefox.app --args "--new-tab" "https://127.0.0.1:8000/"
+
+poetry run python manage.py runsslserver

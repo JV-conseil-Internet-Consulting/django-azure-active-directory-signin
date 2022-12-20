@@ -10,7 +10,7 @@
 
 
 # shellcheck disable=SC1091
-source ".bash/bash_alias.sh"
+source ".bash/osx/bash_alias.sh"
 
 cd "$FOLDER_PATH" || exit
 
@@ -32,16 +32,9 @@ then
    exit 2
 fi
 
-#
-# capturing annoying source ~/virtualenvs/.../bin/activate
-#
-read -r -p ""
-if [[ -z "$REPLY" ]]
-then
-    echo -e "\npress any key to continue\n"
-else
-    echo -e "\n$REPLY\n"
-fi
+
+__capture_lines
+
 
 
 #

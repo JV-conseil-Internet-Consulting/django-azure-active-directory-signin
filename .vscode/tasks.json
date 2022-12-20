@@ -4,23 +4,13 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Launch",
-      "type": "shell",
-      "isBackground": true,
-      "osx": {
-        "command": ".bash/launch.sh"
-      },
-      "runOptions": {
-        "runOn": "folderOpen"
-      },
-      "detail": "Launch a Django Virtual Environment for this project",
-      "problemMatcher": []
-    },
-    {
       "label": "Install",
       "type": "shell",
+      "linux": {
+        "command": ".bash/osx/install.sh && .bash/osx/launch.sh"
+      },
       "osx": {
-        "command": ".bash/install.sh && .bash/launch.sh"
+        "command": ".bash/osx/install.sh && .bash/osx/launch.sh"
       },
       "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
       "problemMatcher": [],
@@ -30,10 +20,29 @@
       }
     },
     {
+      "label": "Launch",
+      "type": "shell",
+      "isBackground": true,
+      "linux": {
+        "command": ".bash/osx/launch.sh"
+      },
+      "osx": {
+        "command": ".bash/osx/launch.sh"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "detail": "Launch a Django Virtual Environment for this project",
+      "problemMatcher": []
+    },
+    {
       "label": "PyPi",
       "type": "shell",
+      "linux": {
+        "command": ".bash/osx/pypi.sh"
+      },
       "osx": {
-        "command": ".bash/pypi.sh"
+        "command": ".bash/osx/pypi.sh"
       },
       "detail": "Publish this project to Pypi",
       "problemMatcher": []
@@ -41,8 +50,11 @@
     {
       "label": "Update",
       "type": "shell",
+      "linux": {
+        "command": ".bash/osx/update.sh"
+      },
       "osx": {
-        "command": ".bash/update.sh"
+        "command": ".bash/osx/update.sh"
       },
       "detail": "Udpate dependencies.",
       "problemMatcher": []
@@ -50,8 +62,11 @@
     {
       "label": "Shell",
       "type": "shell",
+      "linux": {
+        "command": ".bash/osx/shell.sh"
+      },
       "osx": {
-        "command": ".bash/shell.sh"
+        "command": ".bash/osx/shell.sh"
       },
       "detail": "Poetry Shell to run commands like: python manage.py makemigrations.",
       "problemMatcher": []
@@ -59,7 +74,12 @@
     {
       "label": "Test",
       "type": "shell",
-      "command": ".bash/tests.sh",
+      "linux": {
+        "command": ".bash/osx/tests.sh"
+      },
+      "osx": {
+        "command": ".bash/osx/tests.sh"
+      },
       "detail": "Run PyTest",
       "problemMatcher": [],
       "group": {
