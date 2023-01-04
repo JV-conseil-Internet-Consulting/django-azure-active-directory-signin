@@ -56,7 +56,7 @@
       "osx": {
         "command": ".bash/osx/update.sh"
       },
-      "detail": "Udpate dependencies.",
+      "detail": "Update dependencies.",
       "problemMatcher": []
     },
     {

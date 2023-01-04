@@ -15,3 +15,5 @@ source ".bash/osx/bash_alias.sh"
 cd "$FOLDER_PATH" || exit
 
 poetry update
+
+.bash/osx/requirements.sh

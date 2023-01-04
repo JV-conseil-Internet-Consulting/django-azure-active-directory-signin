@@ -31,18 +31,7 @@ poetry install
 poetry update
 poetry show --tree
 
-echo -e "\n\e[0;35mExporting requirements.txt files...\e[0;0m"
-
-poetry export --without-hashes -f requirements.txt --output requirements.txt
-poetry export --dev --without-hashes -f requirements.txt --output requirements-full.txt
-
-# How do I trim leading and trailing whitespace from each line of some output?
-# https://unix.stackexchange.com/a/102229/473393
-
-echo "Triming requirements-dev.txt..."
-
-comm -3 requirements.txt requirements-full.txt | awk '{$1=$1};1' > requirements-dev.txt
-rm -rf requirements-full.txt
+.bash/osx/requirements.sh
 
 echo -e "\n\e[0;35mInitiating Django...\e[0;0m"
 
