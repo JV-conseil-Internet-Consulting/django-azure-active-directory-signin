@@ -22,13 +22,13 @@
             "def"
         ],
         "body": [
-            "def ${1:generic_function}(self, *args, **kwargs):",
+            "def ${1:generic_function}(self, *args, **kwargs) -> int:",
             "\t\" $1 \"",
-            "\toutput = False",
+            "\toutput = 0",
             "\ttry:",
             "\t\t\" Do something here \"",
             "\t\t$0",
-            "\t\toutput = True",
+            "\t\toutput = 1",
             "\texcept Exception as e:",
             "\t\tlogger.exception(e)",
             "\tlogger.debug(\"$1: %s\", output)",
