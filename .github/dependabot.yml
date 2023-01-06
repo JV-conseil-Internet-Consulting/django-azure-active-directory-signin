@@ -5,7 +5,14 @@
 
 version: 2
 updates:
-  - package-ecosystem: "python" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Maintain dependencies for python
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
