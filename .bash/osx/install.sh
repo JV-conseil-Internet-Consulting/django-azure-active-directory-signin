@@ -4,7 +4,7 @@
 # author        : JV-conseil
 # credits       : JV-conseil
 # licence       : BSD 3-Clause License
-# copyright     : Copyright (c) 2022-2023 JV-conseil
+# copyright     : Copyright (c) 2019-2023 JV-conseil
 #                 All rights reserved
 #====================================================
 
