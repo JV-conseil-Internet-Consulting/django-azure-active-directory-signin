@@ -1,12 +1,15 @@
 # Django Azure Active Directory Sign-In 🔑
 
-[![Django 4.14](https://img.shields.io/badge/Django-4.1.4-green)](https://docs.djangoproject.com/en/4.0/releases/4.1.4/)
+[![Django 4.1.4](https://img.shields.io/badge/Django-4.1.4-green)](https://docs.djangoproject.com/en/4.0/releases/4.1.4/)
 [![License BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code style black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/branch/main/graph/badge.svg?token=WLCTWKAPF6)](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin)
 [![PyPI](https://img.shields.io/pypi/v/django-azure-active-directory-signin?color=green)](https://pypi.org/project/django-azure-active-directory-signin/)
-[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=P3DGL6EANDY96)
-[![Follow JV conseil – Internet Consulting on Twitter](https://img.shields.io/twitter/follow/JVconseil.svg?style=social&logo=twitter)](https://twitter.com/JVconseil)
+[![Become a sponsor to JV-conseil](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/JV-conseil "Become a sponsor to JV-conseil")
+[![Follow JV conseil on StackOverflow](https://img.shields.io/stackexchange/stackoverflow/r/2477854)](https://stackoverflow.com/users/2477854/jv-conseil "Follow JV conseil on StackOverflow")
+[![Follow JVconseil on Twitter](https://img.shields.io/twitter/follow/JVconseil.svg?style=social&logo=twitter)](https://twitter.com/JVconseil "Follow JVconseil on Twitter")
+[![Follow JVconseil on Mastodon](https://img.shields.io/mastodon/follow/109896584320509054?domain=https%3A%2F%2Ffosstodon.org)](https://fosstodon.org/@JVconseil "Follow JVconseil@fosstodon.org on Mastodon")
+[![Follow JV conseil on GitHub](https://img.shields.io/github/followers/JV-conseil?label=JV-conseil&style=social)](https://github.com/JV-conseil "Follow JV-conseil on GitHub")
 
 Sign-in users to your Django Web app with Azure Active Directory.
 
@@ -226,3 +229,9 @@ improvements, code coverage and extended documentation.
 - [Quickstart: Add sign-in with Microsoft to a web app](https://docs.microsoft.com/en-us/azure/active-directory/develop/web-app-quickstart?pivots=devlang-python) (docs.microsoft.com)
 - [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions) (docs.microsoft.com)
 - [Enable your Python Django web app to sign in users to your Azure Active Directory](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/tree/main/1-Authentication/sign-in) tenant with the Microsoft identity platform (github.com)
+
+## Sponsorship
+
+If this project helps you, you can offer me a cup of coffee ☕️ :-)
+
+[![Become a sponsor to JV-conseil](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/JV-conseil)
