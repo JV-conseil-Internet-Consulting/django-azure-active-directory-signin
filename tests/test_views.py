@@ -46,8 +46,9 @@ class TestLoginView(TestCase):
             authority=AzureSigninTestConfig.AUTHORITY,
             # Don't care about the `token_cache` object so just pipe it in
             token_cache=mocked_msal_app.call_args.kwargs["token_cache"],
-            validate_authority="login.microsoftonline.com"
-            in AzureSigninTestConfig.AUTHORITY,
+            validate_authority=AzureSigninTestConfig.AUTHORITY.startswith(
+                "https://login.microsoftonline.com/"
+            ),
         )
 
         mocked_msal_app.return_value.initiate_auth_code_flow.assert_called_once_with(
@@ -99,8 +100,9 @@ class TestCallbackView(TransactionTestCase):
             authority=AzureSigninTestConfig.AUTHORITY,
             # Don't care about the `token_cache` object so just pipe it in
             token_cache=mocked_msal_app.call_args.kwargs["token_cache"],
-            validate_authority="login.microsoftonline.com"
-            in AzureSigninTestConfig.AUTHORITY,
+            validate_authority=AzureSigninTestConfig.AUTHORITY.startswith(
+                "https://login.microsoftonline.com/"
+            ),
         )
         m_acf = mocked_msal_app.return_value.acquire_token_by_auth_code_flow
         m_acf.assert_called_once_with(

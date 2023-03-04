@@ -129,8 +129,10 @@ class AzureSigninHandler:
                     client_credential=AzureSigninConfig.CLIENT_SECRET,
                     authority=AzureSigninConfig.AUTHORITY,
                     token_cache=self.cache,
-                    validate_authority="login.microsoftonline.com"
-                    in AzureSigninConfig.AUTHORITY,
+                    # validate_authority="https://login.microsoftonline.com/" in AzureSigninConfig.AUTHORITY,
+                    validate_authority=AzureSigninConfig.AUTHORITY.startswith(
+                        "https://login.microsoftonline.com/"
+                    ),
                 )
             output = self._msal_app
         except Exception as e:
