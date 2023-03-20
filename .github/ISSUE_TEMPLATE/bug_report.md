@@ -1,7 +1,7 @@
 ---
-name: Bug Report \U0001F41E
+name: Bug Report 🐛
 about: Did you find a bug?
-title: 'Bug Report \U0001F41E {short-description}'
+title: 'Bug Report 🐛 {short-description}'
 labels: bug, triage
 assignees: 'JV-conseil'
 
