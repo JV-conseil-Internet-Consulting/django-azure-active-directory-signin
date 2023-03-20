@@ -63,8 +63,10 @@ _jvcl_::poetry_publish() {
   if _jvcl_::ask "Are you ready to publish v${_version} on PyPI"; then
 
     _jvcl_::h1 "Pushing release v${_version} to GitHub..."
+    echo "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/"
+    git pull
     git tag --sign "${_version}" --message "${_version} release"
-    git push "${_version}" --verbose
+    git push origin "${_version}" --verbose
 
     _jvcl_::h1 "Pushing release v${_version} to PyPi..."
     echo "https://pypi.org/project/django-azure-active-directory-signin/"
@@ -79,51 +81,3 @@ if _jvcl_::brew_install_formula "poetry"; then
     _jvcl_::poetry_publish
   fi
 fi
-
-# cd "$FOLDER_PATH" || exit
-
-# __current_version="$(poetry version --short)"
-# __github_tags="$(git tag --list --column --sort tag)"
-
-# echo -e "\n\e[0;35mRunning poetry build for v${__current_version}...\e[0;0m\n"
-
-# poetry build -vvv
-
-# echo -e "\n\e[0;35mRunning a publish dry run of v${__current_version} before publishing it to PyPI...\e[0;0m"
-
-# poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" --dry-run -vvv
-
-# if [[ $__github_tags =~ $__current_version ]]; then
-#   echo -e "\n\e[37;41mYou should update the version number in pyproject.toml file... v${__current_version} is already released on GitHub: ${__github_tags}\e[0;0m"
-#   echo -e "\nOr alternatively you can delete it with git tag --delete ${__current_version}\n"
-#   exit 2
-# fi
-
-# __capture_lines
-
-# #
-# # Check PyPi status before uploading
-# #
-
-# echo -e "\n\e[0;35mCheck PyPi status\e[0;0m 👉 https://status.python.org/\n\nBefore publishing make sure PyPi is not in Read Only mode for maintenance.\n"
-
-# open -n -a /Applications/Firefox.app --args "--new-tab" "https://pypi.org/"
-
-# #
-# # Are you ready to publish on PyPI?
-# #
-
-# echo -e -n "\e[0;33mAre you ready to publish on PyPI? [y/N] "
-# echo -e -n '\e[0;0m'
-# read -r -n 1
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]; then
-#   echo -e "\n\e[0;35mPushing release v${__current_version} to GitHub...\e[0;0m\n"
-
-#   git tag --annotate "${__current_version}" --message "${__current_version} release"
-#   git push origin "${__current_version}" --verbose
-
-#   echo -e "\n\e[0;35mPushing release v${__current_version} to PyPi...\e[0;0m https://pypi.org/project/django-azure-active-directory-signin/"
-
-#   poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" -vvv
-# fi

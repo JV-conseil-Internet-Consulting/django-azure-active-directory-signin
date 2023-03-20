@@ -231,3 +231,9 @@ improvements, code coverage and extended documentation.
 - [Quickstart: Add sign-in with Microsoft to a web app](https://docs.microsoft.com/en-us/azure/active-directory/develop/web-app-quickstart?pivots=devlang-python) (docs.microsoft.com)
 - [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http#permissions) (docs.microsoft.com)
 - [Enable your Python Django web app to sign in users to your Azure Active Directory](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/tree/main/1-Authentication/sign-in) tenant with the Microsoft identity platform (github.com)
+
+## Sponsorship
+
+If this project helps you, you can offer me a cup of coffee ☕️ :-)
+
+[![Become a sponsor to JV-conseil](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/JV-conseil)
