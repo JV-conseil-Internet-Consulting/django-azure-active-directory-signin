@@ -1,59 +1,71 @@
 ---
-name: "\U0001F41E Bug Report"
+name: Bug Report \U0001F41E
 about: Did you find a bug?
-title: ''
+title: 'Bug Report \U0001F41E {short-description}'
 labels: bug, triage
-assignees: ''
+assignees: 'JV-conseil'
 
 ---
 
 <!--
-  Hi there! Thank you for discovering and submitting an issue.
+
+  Hi there 👋 Thank you for discovering and submitting an issue.
 
   Before you submit this; let's make sure of a few things.
   Please make sure the following boxes are ticked if they are correct.
   If not, please try and fulfill these first.
+
 -->
 
-<!-- Checked checkbox should look like this: [x] -->
-- [ ] I am on the [latest](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/latest) version.
-- [ ] I have searched the [issues](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues) of this repo and believe that this is not a duplicate.
-- [ ] If an exception occurs when executing a command, I executed it again in debug mode (`DEBUF = True` in settings).
+- [ ] I have activated the browser Private mode to evaluate if the error still happens.
+- [ ] I have turn-off any extension on my browser like adblock that may interfere with the app behaviour.
+- [ ] I am on the [latest][latest] version.
+- [ ] I have checked that no other similar [issues][issues] are already opened and believe that this is not a duplicate.
+- [ ] I have searched the [documentation][documentation] and believe that my question is not covered.
+- [ ] If an exception occurs when executing a command, I execute it again in debug mode (`DEBUF = True` in settings).
 
-<!--
-  Once those are done, if you're able to fill in the following list with your information,
-  it'd be very helpful to whoever handles the issue.
--->
+---
 
-**Describe the bug**
-A clear and precise description of what the bug is, please be descriptive! Thanks again 🙌 
+### Describe the bug 🐛
 
-**To Reproduce**
-Steps to reproduce the behavior:
+> A clear and precise description of what the bug is, please be descriptive! Thanks 🙌
 
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+### To Reproduce 🔂
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+> Steps to reproduce the behavior:
+>
+> 1. Go to '...'
+> 2. Click on '....'
+> 3. Scroll down to '....'
+> 4. See error
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Expected behavior 🚀
 
-**Desktop (please complete the following information):**
+> A clear and concise description of what you expected to happen.
 
-- OS: [e.g. iOS]
-- Browser [e.g. chrome, safari]
-- Version [e.g. 22]
+### Configuration ⚙️
 
-**Smartphone (please complete the following information):**
+> A clear and concise description of your configuration.
+>
+> Python 3.11.0
+> PostgreSQL Server 14.5
+> Django version 4.1.2
+> ...
 
-- Device: [e.g. iPhone6]
-- OS: [e.g. iOS8.1]
-- Browser [e.g. stock browser, safari]
-- Version [e.g. 22]
+### Screenshots 📸
 
-**Additional context**
-Add any other context about the problem here.
+> If applicable, add screenshots to help explain your problem.
+
+### Diagnosis attempts 🩺
+
+> `curl "https://some.domain.name" --verbose`
+
+### Additional context 🌍
+
+> Add any other context about the problem here.
+
+<!-- links -->
+
+[documentation]: https://pypi.org/project/django-azure-active-directory-signin
+[issues]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/issues
+[latest]: https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/releases/latest

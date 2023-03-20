@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ "3.8", "3.9" ]
+        python-version: ["3.8", "3.9"]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -16,7 +16,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          . .bash/install_poetry.sh
+          . .bash/incl/_poetry_install.sh
           poetry install
       - name: Format code
         run: |
@@ -34,14 +34,14 @@ jobs:
       - name: Set up Python 3.8
         uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
+          python-version: "3.8"
       - name: Configure Git
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
       - name: Deploy to PyPi
         run: |
-          . .bash/install_poetry.sh
+          . .bash/incl/_poetry_install.sh
           poetry publish --build -u ${{ secrets.PYPI_USERNAME}} -p ${{ secrets.PYPI_PASSWORD }}
       - name: Git tag
         run: |
@@ -58,14 +58,14 @@ jobs:
       - name: Set up Python 3.8
         uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
+          python-version: "3.8"
       - name: Configure Git
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
       - name: Deploy to PyPi
         run: |
-          . .bash/install_poetry.sh
+          . .bash/incl/_poetry_install.sh
           poetry version prerelease
           poetry publish --build -u ${{ secrets.PYPI_USERNAME}} -p ${{ secrets.PYPI_PASSWORD }}
           git commit -a -m "Prerelease bumped version [skip ci]"

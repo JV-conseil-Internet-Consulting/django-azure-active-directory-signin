@@ -3,17 +3,17 @@
 #
 # author        : JV-conseil
 # credits       : JV-conseil
-# licence       : BSD 3-Clause License
 # copyright     : Copyright (c) 2019-2023 JV-conseil
 #                 All rights reserved
 #====================================================
 
+# shellcheck source=/dev/null
+{
+  . ".bash/incl/all.sh"
+  . ".bash/osx/poetry.sh"
+}
 
-# shellcheck disable=SC1091
-source ".bash/osx/bash_alias.sh"
-
-cd "$FOLDER_PATH" || exit
+_jvcl_::h1 "Poetry Update..."
 
 poetry update
-
-.bash/osx/requirements.sh
+_jvcl_::poetry_export_requirements

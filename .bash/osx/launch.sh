@@ -3,20 +3,19 @@
 #
 # author        : JV-conseil
 # credits       : JV-conseil
-# licence       : BSD 3-Clause License
 # copyright     : Copyright (c) 2019-2023 JV-conseil
 #                 All rights reserved
 #====================================================
 
+# shellcheck source=/dev/null
+. ".bash/incl/all.sh"
 
-# shellcheck disable=SC1091
-source ".bash/osx/bash_alias.sh"
+open -na /Applications/Firefox.app --args "--new-tab" "https://localhost:8000/"
 
+if [ "${DEBUG}" -eq 0 ]; then
+  _jvcl_::h2 "Collecting Static files"
+  poetry run python manage.py collectstatic --no-input
+fi
 
-cd "$FOLDER_PATH" || exit
-
-echo -e "\n\e[0;35mLaunching local server...\e[0;0m https://127.0.0.1:8000/\n"
-
-open -n -a /Applications/Firefox.app --args "--new-tab" "https://127.0.0.1:8000/"
-
-poetry run python manage.py runsslserver
+poetry run python manage.py check --deploy 2>&1 | tee -a logfile.log
+poetry run python manage.py runsslserver 2>&1 | tee -a logfile.log

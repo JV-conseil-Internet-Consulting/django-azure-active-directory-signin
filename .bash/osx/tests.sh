@@ -3,16 +3,12 @@
 #
 # author        : JV-conseil
 # credits       : JV-conseil
-# licence       : BSD 3-Clause License
 # copyright     : Copyright (c) 2019-2023 JV-conseil
 #                 All rights reserved
 #====================================================
 
+# shellcheck source=/dev/null
+. ".bash/incl/all.sh"
 
-# shellcheck disable=SC1091
-source ".bash/osx/bash_alias.sh"
-
-
-cd "$FOLDER_PATH" || exit
-
+_jvcl_::h1 "Running Tests..."
 poetry run pytest

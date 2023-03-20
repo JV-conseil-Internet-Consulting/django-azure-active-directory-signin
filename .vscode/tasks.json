@@ -7,10 +7,10 @@
       "label": "Install",
       "type": "shell",
       "linux": {
-        "command": ".bash/osx/install.sh && .bash/osx/launch.sh"
+        "command": ".bash/osx/poetry.sh && .bash/osx/django.sh && .bash/osx/launch.sh"
       },
       "osx": {
-        "command": ".bash/osx/install.sh && .bash/osx/launch.sh"
+        "command": ".bash/osx/poetry.sh && .bash/osx/django.sh && .bash/osx/launch.sh"
       },
       "detail": "Install a Django Virtual Environment with Poetry and/or Pipenv for this project",
       "problemMatcher": [],

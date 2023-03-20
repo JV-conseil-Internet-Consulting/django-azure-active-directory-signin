@@ -21,10 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-c4na0q5cvl41df&nby(wo%)5vk*rv_c#n!y)ss^8-)c2_96m6@"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", "1")) > 0
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -141,13 +142,37 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-"""
-SECURE_SSL_REDIRECT
-https://docs.djangoproject.com/en/3.1/ref/settings/#secure-proxy-ssl-header
-"""
+""" NOTE: SECURE_SSL_REDIRECT
+
+If turning this to True causes infinite redirects, it probably means your site is
+running behind a proxy and can’t tell which requests are secure and which are not.
+
+- https://docs.djangoproject.com/en/4.1/ref/settings/#std:setting-SECURE_SSL_REDIRECT
+- https://docs.djangoproject.com/en/4.1/ref/settings/#secure-proxy-ssl-header
 
 SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+"""
+
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = True
+
+""" NOTE: SESSIONS
+https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SESSION_COOKIE_AGE
+"""
+
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_AGE = 432000  # 5 days
+SESSION_COOKIE_NAME = "wlc3972JK694TFPfDjOwX2F"
+
+""" NOTE: CSRF_USE_SESSIONS
+Acquiring the token if CSRF_USE_SESSIONS or CSRF_COOKIE_HTTPONLY is True
+https://docs.djangoproject.com/en/4.1/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-or-csrf-cookie-httponly-is-true
+"""
+
+CSRF_USE_SESSIONS = True
+CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
+CSRF_COOKIE_HTTPONLY = CSRF_USE_SESSIONS
 
 "LOGGING"
 
@@ -156,15 +181,29 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "console": {
+            # "()": "core.django_colors_formatter.formatter.DjangoConsoleColors",
             "format": "{asctime} {levelname} {name} {message}",
             "style": "{",
         }
     },
     "handlers": {
-        "console": {"class": "logging.StreamHandler", "formatter": "console"},
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "console",
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "formatter": "console",
+            "filename": "logfile.log",
+        },
+        "mail_admins": {
+            "level": "ERROR",
+            "class": "django.utils.log.AdminEmailHandler",
+            "include_html": True,
+        },
     },
     "root": {
-        "handlers": ["console"],
+        "handlers": ["console", "file", "mail_admins"],
         "level": "DEBUG" if DEBUG else "INFO",
     },
 }

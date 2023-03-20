@@ -1,29 +1,18 @@
 {
+  "editor.bracketPairColorization.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.matchBrackets": "always",
+  "editor.wordWrap": "on",
+  "files.eol": "\n",
   "files.exclude": {
-    "**/core/ntlk_data": true,
-    "**/dumpdata": true,
-    "**/node_modules/**": true,
     "**/*.pyc": {
       "when": "$(basename).py"
     },
     "**/__pycache__": true,
   },
-  "python.linting.flake8Enabled": true,
-  "python.linting.enabled": true,
-  "python.formatting.provider": "black",
-  "editor.formatOnSave": true,
-  "python.linting.flake8Args": [
-    "--max-line-length=88",
-  ],
-  "python.formatting.blackArgs": [
-    "--line-length=88"
-  ],
-  "editor.wordWrap": "on",
   "html.format.indentHandlebars": true,
   "html.format.indentInnerHtml": true,
   "html.format.templating": true,
-  "editor.matchBrackets": "always",
-  "editor.bracketPairColorization.enabled": false,
   "[css][scss][less]": {
     "editor.defaultFormatter": "vscode.css-language-features"
   },
@@ -36,11 +25,39 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "scss.format.enable": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "python.formatting.blackArgs": [
+    "--line-length=88"
+  ],
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=88",
+  ],
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.terminal.activateEnvironment": false,
   "scss.format.braceStyle": "collapse",
+  "scss.format.enable": false,
+  "shellcheck.logLevel": "trace",
+  "shellformat.effectLanguages": [
+    "shellscript",
+    "dockerfile",
+    "dotenv",
+    "hosts",
+    "jvmoptions",
+    "ignore",
+    "gitignore",
+    "properties",
+    "spring-boot-properties",
+    "azcli",
+    "bats"
+  ],
+  "shellformat.useEditorConfig": true,
   "task.allowAutomaticTasks": "on",
-  "files.eol": "\n",
   "terminal.integrated.defaultProfile.linux": "bash",
-  "terminal.integrated.defaultProfile.windows": "bash",
   "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.defaultProfile.windows": "bash",
 }

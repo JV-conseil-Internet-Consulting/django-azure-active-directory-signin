@@ -5,10 +5,11 @@
 # credits       : JV-conseil
 # copyright     : Copyright (c) 2019-2023 JV-conseil
 #                 All rights reserved
+#
+# Helper script for installing poetry on pipeline
+#
 #====================================================
 
-# shellcheck source=/dev/null
-. ".bash/incl/all.sh"
+curl -sSL https://install.python-poetry.org | python3 -
 
-_jvcl_::h1 "Poetry Shell..."
-poetry shell
+export PATH="/root/.local/bin:${PATH}"

@@ -1,8 +1,9 @@
 # Django Azure Active Directory Sign-In 🔑
 
-[![Django 4.1.4](https://img.shields.io/badge/Django-4.1.4-green)](https://docs.djangoproject.com/en/4.0/releases/4.1.4/)
-[![License BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
-[![Code style black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Django 4.1](https://img.shields.io/badge/Django-4.1.7-green)](https://docs.djangoproject.com/en/4.1/releases/4.1.7/)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11.2-green)](https://www.python.org/downloads/release/python-3112/)
+[![License EUPL 1.2](https://img.shields.io/badge/License-EUPL--1.2-blue.svg)](LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![CodeQL](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/actions/workflows/codeql-analysis.yml)
 [![codecov](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/branch/main/graph/badge.svg?token=WLCTWKAPF6)](https://codecov.io/gh/JV-conseil-Internet-Consulting/django-azure-active-directory-signin)
 [![PyPI](https://img.shields.io/pypi/v/django-azure-active-directory-signin?color=green)](https://pypi.org/project/django-azure-active-directory-signin/)

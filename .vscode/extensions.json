@@ -10,5 +10,7 @@
     "ms-python.python",
     "ms-python.isort",
     "davidanson.vscode-markdownlint",
+    "foxundermoon.shell-format",
+    "bierner.markdown-emoji"
   ]
 }
