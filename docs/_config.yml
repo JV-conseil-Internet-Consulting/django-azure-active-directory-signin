@@ -4,3 +4,7 @@ remote_theme: https://github.com/JV-conseil/read-the-docs-jekyll-theme
 aux_links:
   "View PyPi package":
     - "//pypi.org/project/django-azure-active-directory-signin/"
+
+google:
+  gtag: G-HFDTQNXRPB
+  site_verification: ChPjQbKFflPAwOF9uuYRLEodZBgPjW5CISg0gSsViN0
