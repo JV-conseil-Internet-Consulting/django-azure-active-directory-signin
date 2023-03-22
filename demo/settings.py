@@ -194,7 +194,7 @@ LOGGING = {
         "file": {
             "class": "logging.FileHandler",
             "formatter": "console",
-            "filename": "logfile.log",
+            "filename": BASE_DIR / "logfile.log",
         },
         "mail_admins": {
             "level": "ERROR",
