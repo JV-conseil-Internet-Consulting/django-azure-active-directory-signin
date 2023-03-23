@@ -8,3 +8,11 @@ aux_links:
 google:
   gtag: G-HFDTQNXRPB
   site_verification: ChPjQbKFflPAwOF9uuYRLEodZBgPjW5CISg0gSsViN0
+
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
+
+readme_index:
+  with_frontmatter: true
