@@ -36,18 +36,21 @@ _jvcl_::poetry_build_dry_run() {
 }
 
 _jvcl_::check_tag_version() {
-  local _github_tags _version
-  _github_tags="$(git tag --list --column --sort tag)"
+  local _git_tags _version
+  _git_tags="$(git tag --list --column --sort tag)"
   _version="$(poetry version --short)"
-  if [[ $_github_tags =~ $_version ]]; then
-    _jvcl_::alert "v${_version} is already released on GitHub"
+  echo
+  if [[ $_git_tags =~ $_version ]]; then
+    _jvcl_::alert "${_version} tag already exists"
     cat <<EOF
-${_github_tags}
+${_git_tags}
 
 You should update the version number in ./pyproject.toml file...
+version = "${_version:0:-1}$((${_version:(-1)} + 1))"
 
-Or alternatively you can delete it with
+Or alternatively delete it with
 git tag --delete ${_version} && git push --delete ${_version}
+
 EOF
     false
   else
@@ -56,20 +59,21 @@ EOF
 }
 
 _jvcl_::poetry_publish() {
-  local _version
+  local _repository _version
 
+  _repository=$(grep -Eo "^repository.+$" ./pyproject.toml | sed -E 's/^repository = "(.+)"$/\1/')
   _version="$(poetry version --short)"
 
   if _jvcl_::ask "Are you ready to publish v${_version} on PyPI"; then
 
     _jvcl_::h1 "Pushing release v${_version} to GitHub..."
-    echo "https://github.com/JV-conseil-Internet-Consulting/django-azure-active-directory-signin/"
+    echo "${_repository}"
     git pull
     git tag --sign "${_version}" --message "${_version} release"
     git push origin "${_version}" --verbose
 
     _jvcl_::h1 "Pushing release v${_version} to PyPi..."
-    echo "https://pypi.org/project/django-azure-active-directory-signin/"
+    echo "${_repository}"
     poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" -vvv
   fi
 }
