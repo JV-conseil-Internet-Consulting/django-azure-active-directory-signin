@@ -59,8 +59,9 @@ EOF
 }
 
 _jvcl_::poetry_publish() {
-  local _repository _version
+  local _name _repository _version
 
+  _name=$(grep -Eo "^name.+$" ./pyproject.toml | sed -E 's/^name = "(.+)"$/\1/')
   _repository=$(grep -Eo "^repository.+$" ./pyproject.toml | sed -E 's/^repository = "(.+)"$/\1/')
   _version="$(poetry version --short)"
 
@@ -68,12 +69,13 @@ _jvcl_::poetry_publish() {
 
     _jvcl_::h1 "Pushing release v${_version} to GitHub..."
     echo "${_repository}"
+    echo
     git pull
     git tag --sign "${_version}" --message "${_version} release"
     git push origin "${_version}" --verbose
 
     _jvcl_::h1 "Pushing release v${_version} to PyPi..."
-    echo "${_repository}"
+    echo "https://pypi.org/project/${_name}/"
     poetry publish --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" -vvv
   fi
 }
