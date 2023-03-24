@@ -6,8 +6,9 @@ aux_links:
     - "//pypi.org/project/django-azure-active-directory-signin/"
 
 google:
-  gtag: G-HFDTQNXRPB
   site_verification: ChPjQbKFflPAwOF9uuYRLEodZBgPjW5CISg0gSsViN0
+
+posthog: phc_f6FrCZbt951cotQoYFi5VAS7KYpyCnpgRcbknlMwBDs
 
 plugins:
   - jemoji
