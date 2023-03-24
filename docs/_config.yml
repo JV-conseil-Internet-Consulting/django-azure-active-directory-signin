@@ -14,6 +14,9 @@ mouseflow:
 posthog:
   project_api_key: phc_f6FrCZbt951cotQoYFi5VAS7KYpyCnpgRcbknlMwBDs
 
+telemetry:
+  app_id: CB7D497B-DC8A-4C75-B5FD-00AAA1F60E41
+
 plugins:
   - jemoji
   - jekyll-avatar
