@@ -39,8 +39,8 @@ _jvcl_::check_tag_version() {
   local _git_tags _version
   _git_tags="$(git tag --list --column --sort tag)"
   _version="$(poetry version --short)"
-  echo
   if [[ $_git_tags =~ $_version ]]; then
+    echo
     _jvcl_::alert "${_version} tag already exists"
     cat <<EOF
 ${_git_tags}
