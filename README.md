@@ -2,6 +2,7 @@
 
 [![Django 4.1](https://img.shields.io/badge/Django-4.1.7-green)](https://docs.djangoproject.com/en/4.1/releases/4.1.7/)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11.2-green)](https://www.python.org/downloads/release/python-3112/)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=JV-conseil-Internet-Consulting.django-azure-active-directory-signin)
 [![Umami - GDPR compliant alternative to Google Analytics](https://img.shields.io/badge/analytics-umami-green)](https://analytics.umami.is/share/M19mr5L7jVhHuFnb/jv-conseil.github.io "Umami - GDPR compliant alternative to Google Analytics")
 [![License EUPL 1.2](https://img.shields.io/badge/License-EUPL--1.2-blue.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
