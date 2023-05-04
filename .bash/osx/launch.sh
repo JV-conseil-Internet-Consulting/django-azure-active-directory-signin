@@ -10,12 +10,19 @@
 # shellcheck source=/dev/null
 . ".bash/incl/all.sh"
 
-open -na /Applications/Firefox.app --args "--new-tab" "https://localhost:8000/"
+_jvcl_::poetry_run() {
+  if [ "${DEBUG}" -eq 0 ]; then
+    _jvcl_::h2 "Collecting Static files"
+    poetry run python manage.py collectstatic --no-input
+  fi
 
-if [ "${DEBUG}" -eq 0 ]; then
-  _jvcl_::h2 "Collecting Static files"
-  poetry run python manage.py collectstatic --no-input
-fi
+  # poetry run python manage.py check --deploy 2>&1 | tee -a logfile.log
+  poetry run python manage.py check --deploy
 
-poetry run python manage.py check --deploy 2>&1 | tee -a logfile.log
-poetry run python manage.py runsslserver 2>&1 | tee -a logfile.log
+  open -na /Applications/Firefox.app --args "--new-tab" "https://localhost:8000/"
+
+  # poetry run python manage.py runsslserver 2>&1 | tee -a logfile.log
+  poetry run python manage.py runsslserver
+}
+
+_jvcl_::poetry_run

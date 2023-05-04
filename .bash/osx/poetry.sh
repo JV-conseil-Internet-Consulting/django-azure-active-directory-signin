@@ -21,13 +21,17 @@ _jvcl_::poetry_export_requirements() {
 }
 
 _jvcl_::poetry_install() {
-  find . -type f -name "poetry.lock" -print -delete
+  local _cmd
 
-  poetry env use "${PYTHONPATH}"
-  poetry check
-  poetry install
-  poetry update
-  poetry show --tree
+  find . -type f -name "poetry.lock" -print -delete || :
+
+  poetry env use "${PYTHONPATH}" || :
+
+  for _cmd in "check" "install" "update"; do
+    poetry "${_cmd}" || :
+  done
+
+  poetry show --tree || :
   echo
 }
 
