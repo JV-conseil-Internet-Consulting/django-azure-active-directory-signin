@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-azure-active-directory-signin"
-version = "0.2.4"
+version = "0.2.5"
 description = "Sign-in users to your Django Web app with Azure Active Directory."
 authors = ["JV conseil <contact@jv-conseil.net>"]
 license = "EUPL-1.2"

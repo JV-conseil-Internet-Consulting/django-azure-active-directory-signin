@@ -16,13 +16,3 @@ _jvcl_::key_gen() {
     openssl rand -base64 "${_size}"
   fi
 }
-
-_jvcl_::capture_lines() {
-  # capturing annoying source ~/virtualenvs/.../bin/activate
-  read -r -p ""
-  if [ -n "${REPLY}" ]; then
-    echo "${REPLY}"
-  fi
-  echo "Press any key to continue..."
-  echo
-}

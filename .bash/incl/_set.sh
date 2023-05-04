@@ -25,6 +25,17 @@
 #
 #====================================================
 
+# unbound variables
+_jvcl_::hack_unbound_variables() {
+  # shellcheck disable=SC2034
+  {
+    VSCODE_SHELL_LOGIN=""
+    VSCODE_PATH_PREFIX=""
+    HISTCONTROL=""
+    PROMPT_COMMAND=""
+  }
+}
+
 _jvcl_::set_show_options() {
   bash --version || :
   cat <<EOF
@@ -51,5 +62,6 @@ _jvcl_::set_strict_mode() {
 
 _jvcl_::set_terminal_mode
 if [ "${BASH_STRICT_MODE}" -gt 0 ]; then
+  _jvcl_::hack_unbound_variables
   _jvcl_::set_strict_mode
 fi
