@@ -1,5 +1,5 @@
 asgiref==3.7.2 ; python_full_version >= "3.9.16"
-certifi==2023.5.7 ; python_full_version >= "3.9.16"
+certifi==2023.7.22 ; python_full_version >= "3.9.16"
 cffi==1.15.1 ; python_full_version >= "3.9.16"
 charset-normalizer==3.1.0 ; python_full_version >= "3.9.16"
 cryptography==40.0.2 ; python_full_version >= "3.9.16"
